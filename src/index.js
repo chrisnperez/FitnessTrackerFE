@@ -2,13 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-
-
-const App = () => {
-  return <div>
-    Whopper
-  </div>
-}
+import App from './App';
 
 const rootEl = document.getElementById('app');
 const root = ReactDOMClient.createRoot(rootEl);
