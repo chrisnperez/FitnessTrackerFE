@@ -6,34 +6,41 @@ import { BASE_URL } from '../api';
 
 
 
-const Register = () => {
+const Register = ({ setToken, setUser, token }) => {
   // const params = useParams();
-  // const{actionType} = params;
+  const { actionType } = useParams();
+  const history = useHistory();
+  console.log(actionType)
+
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(username,password);
     try {
       const response = await fetch(
-        `${BASE_URL}/users/register`, {
+        `${BASE_URL}/users/${actionType}`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-        
-            username: username,
-            password: password
-          
+
+          username: username,
+          password: password
+
         })
       });
       const result = await response.json();
       // As written below you can log your result
       // to check what data came back from the above code.
       console.log(result);
+      const token = result?.token;
+      setPassword('');
+      setUsername('');
+      setToken(token);
+      console.log(actionType)
       return result;
     } catch (err) {
       console.error(err);
@@ -41,39 +48,40 @@ const Register = () => {
   }
 
 
-
-
   return (
     <>
-      <div className="login-container">
-        <h1>Test form</h1>
-        <form onSubmit={handleSubmit}>
-          <div >
-            <label htmlFor="username">Username: </label>
-            <input
-              required
-              label="Username"
-              value={username}
-              onChange={event => setUsername(event.target.value)}
-            />
-          </div>
-          <div >
-            <label htmlFor="password">Password: </label>
-            <input
-              required
-              label="Password"
-              value={password}
-              onChange={event => setPassword(event.target.value)}
-            />
-          </div>
-          <button type="submit">Submit</button>
-
-        </form>
-
-
-      </div>
-
-
+      {!token ?
+        <div className="loginContainer">
+          <h1>{actionType === "register" ? "Sign Up" : "Log In"}</h1>
+          <form onSubmit={handleSubmit} >
+            <div >
+              <label htmlFor="username">Username: </label>
+              <input
+                required
+                label="Username"
+                value={username}
+                onChange={event => setUsername(event.target.value)}
+              />
+            </div>
+            <div >
+              <label htmlFor="password">Password: </label>
+              <input
+                required
+                label="Password"
+                value={password}
+                onChange={event => setPassword(event.target.value)}
+              />
+            </div>
+            <button type="submit">{actionType === 'register' ? "Register" : "Log In"}</button>
+            {actionType === "register"
+              ? <Link to="/users/login">Already have an account? Log In here.</Link>
+              : <Link to="/users/register">Need an account? Register here.</Link>
+            }
+          </form>
+        </div>
+        : <div className="loggedInDisplay">
+          <p>You are already signed in!</p>
+        </div>}
     </>
   )
 
