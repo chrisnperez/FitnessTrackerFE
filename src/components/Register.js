@@ -40,8 +40,31 @@ const Register = ({ setToken, setUser, token }) => {
       setPassword('');
       setUsername('');
       setToken(token);
+
+      if (token) {
+        try {
+          const response = await fetch(`${BASE_URL}/users/me`, {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+              ...(token && { 'Authorization': `Bearer ${token}` })
+            },
+          });
+          const result = await response.json();
+          const confirmedUser = result?.data?.username
+          setPassword('');
+          setUsername('');
+          setUser(confirmedUser)
+          history.push('/profile')
+          return result
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
       console.log(actionType)
       return result;
+
     } catch (err) {
       console.error(err);
     }
