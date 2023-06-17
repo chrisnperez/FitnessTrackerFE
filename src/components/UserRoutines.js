@@ -13,7 +13,7 @@ const UserRoutines = ({ setToken, setUser, token }) => {
           const response = await fetch(`${BASE_URL}/users/albert/routines`, {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+              'Authorization': `Bearer ${token}`
             },
           });
           const result = await response.json();
@@ -25,3 +25,5 @@ const UserRoutines = ({ setToken, setUser, token }) => {
       }
 
 }
+
+export default UserRoutines;
