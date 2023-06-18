@@ -6,7 +6,8 @@ import {
   Register,
   UserRoutines,
   Profile,
-  Logout
+  Logout,
+  Activities
 } from './components';
 
 const App = () => {

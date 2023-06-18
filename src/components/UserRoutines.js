@@ -8,7 +8,6 @@ import { BASE_URL } from '../api';
 const UserRoutines = ({ token, user }) => {
 
     const myData = async (event) => {
-      event.preventDefault();
         try {
           const response = await fetch(`${BASE_URL}/users/${user}/routines`, {
             headers: {
@@ -24,18 +23,12 @@ const UserRoutines = ({ token, user }) => {
         }
       }
       useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await myData(token,user);
-          } catch (err) {
-            // handle the error, e.g. show an error message to the user
-          }
-        };
       
-        fetchData();
+      
+        myData();
         // call fetchPosts() here if necessary
       
-      }, [token]);
+      });
 
 return (
   <>
