@@ -41,8 +41,6 @@ const Register = ({ setToken, setUser, token }) => {
       setPassword('');
       setUsername('');
       setToken(token);
-      localStorage.setItem('token', token);
-
      
 
       // console.log(actionType)
