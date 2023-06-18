@@ -52,10 +52,11 @@ const Register = ({ setToken, setUser, token }) => {
             },
           });
           const result = await response.json();
-          const confirmedUser = result?.data?.username
+          const confirmedUser = result?.username
           setPassword('');
           setUsername('');
           setUser(confirmedUser)
+  
           history.push('/profile')
           return result
         } catch (err) {

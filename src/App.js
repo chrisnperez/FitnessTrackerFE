@@ -14,8 +14,6 @@ const App = () => {
   const [token,setToken] = useState(localStorage.getItem('token') ?? null);
   const [ user, setUser ] = useState(null); 
   const [routines,setRoutines] = useState([]);
-
-
     return (
     <>
     <nav className='navBar'>
@@ -31,14 +29,14 @@ const App = () => {
     </Route>
 
     <Route exact path = "/routines"> 
-    <UserRoutines token = {token} setToken = {setToken} setUser = {setUser} />
 
     </Route>
 
     <Route exact path = "/profile">
       <Profile token = {token} setToken = {setToken} setUser = {setUser} /> 
       <hr></hr>
-      <Logout token = {token} setToken = {setToken} setUser = {setUser} />
+      <Logout token = {token} setToken = {setToken} setUser = {setUser} />   
+       <UserRoutines token = {token} user = {user} />
     </Route>
 
     
