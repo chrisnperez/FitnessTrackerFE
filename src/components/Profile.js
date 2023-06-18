@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BASE_URL } from '../api';
 
-const Profile = async (token) => {
+const Profile =  (token) => {
+
+    const handleSubmit = async (event) => {
     try {
         const response = await fetch(`${BASE_URL}/users/me`, {
           headers: {
@@ -18,8 +20,8 @@ const Profile = async (token) => {
       } catch (err) {
         console.error(err);
       }
+    }
     
-
 }
 
 export default Profile; 

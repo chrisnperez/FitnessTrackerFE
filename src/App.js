@@ -3,14 +3,18 @@ import { Route, Link } from 'react-router-dom';
 import {useState} from 'react';
 
 import {
-  Register
+  Register,
+  UserRoutines,
+  Profile,
+  Logout
 } from './components';
-import { UserRoutines } from './components';
 
 const App = () => {
 
-  const [token,setToken] = useState(null);
+  const [token,setToken] = useState(localStorage.getItem('token') ?? null);
   const [ user, setUser ] = useState(null); 
+  const [routines,setRoutines] = useState([]);
+
 
     return (
     <>
@@ -32,7 +36,9 @@ const App = () => {
     </Route>
 
     <Route exact path = "/profile">
-      <Profile token = {token} />
+      <Profile token = {token} setToken = {setToken} setUser = {setUser} /> 
+      <hr></hr>
+      <Logout token = {token} setToken = {setToken} setUser = {setUser} />
     </Route>
 
     
