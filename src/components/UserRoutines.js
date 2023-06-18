@@ -23,16 +23,13 @@ const UserRoutines = ({ token, user }) => {
         }
       }
       useEffect(() => {
-      
-      
         myData();
         // call fetchPosts() here if necessary
-      
       });
 
 return (
   <>
-  <h2>Hello {user.username}! </h2>
+  <h2>Hello {user}! </h2>
   </>
 )
 

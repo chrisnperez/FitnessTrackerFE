@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import {useState} from 'react';
-
 import {
   Register,
   UserRoutines,
@@ -9,12 +8,49 @@ import {
   Logout,
   Activities
 } from './components';
+import { BASE_URL } from './api';
+
 
 const App = () => {
 
   const [token,setToken] = useState(localStorage.getItem('token') ?? null);
   const [ user, setUser ] = useState(null); 
   const [routines,setRoutines] = useState([]);
+
+  useEffect(() => {
+    const tempToken = localStorage.getItem('token');
+    if (tempToken) {
+      setToken(tempToken);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (token) {
+        try {
+          const response = await fetch(`${BASE_URL}/users/me`, {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+              ...(token && { 'Authorization': `Bearer ${token}` })
+            },
+          });
+          const result = await response.json();
+          const confirmedUser = result?.username
+          // setPassword('');
+          // setUsername('');
+          setUser(confirmedUser)
+    
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+    fetchUser();
+    }, [token]);
+
+   
+
     return (
     <>
     <nav className='navBar'>
@@ -34,7 +70,7 @@ const App = () => {
     </Route>
 
     <Route exact path = "/profile">
-      <Profile token = {token} setToken = {setToken} setUser = {setUser} /> 
+      <Profile token = {token} setToken = {setToken} setUser = {setUser} user={user} /> 
       <hr></hr>
       <Logout token = {token} setToken = {setToken} setUser = {setUser} />   
        <UserRoutines token = {token} user = {user} />
