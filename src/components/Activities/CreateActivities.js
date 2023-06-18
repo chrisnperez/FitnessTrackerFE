@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { BASE_URL } from "../../api";
 
-const CreateActivity = ({token}) => {
+    const CreateActivities = ({token}) => {
     const [name, setName] = useState("");
-const [description, setDescription] = useState ("");
+    const [description, setDescription] = useState ("");
 
 
     const handleSubmit = async (event) => {
@@ -23,9 +23,8 @@ const [description, setDescription] = useState ("");
           });
       
           const result = await response.json();
-      
-          console.log(result);
-          console.log(name,description)
+          setName('');
+          setDescription('');
           return result
         } catch (err) {
           console.error(err);
@@ -62,4 +61,4 @@ const [description, setDescription] = useState ("");
 
 }
 
-export default CreateActivity;
+export default CreateActivities;

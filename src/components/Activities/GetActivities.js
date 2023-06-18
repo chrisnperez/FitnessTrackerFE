@@ -1,9 +1,10 @@
 import React from 'react';
 import { BASE_URL } from '../../api';
 import { useEffect,useState } from 'react';
+import UpdateActivities from './UpdateActivities';
 
 
-const GetActivities = () => {
+const GetActivities = ({token}) => {
 
     const [activities,setActivities] = useState([]);
 
@@ -45,6 +46,7 @@ return (
             <h1>{name}</h1>
             <h3>{description}</h3>
             <h4>Id:{id}</h4>
+            <UpdateActivities name = {name} description = {description} token = {token} id = {id} />
           </div>
         ))
       ) : (
@@ -54,6 +56,7 @@ return (
   </div>
   
     </>
+
   )
 }
 

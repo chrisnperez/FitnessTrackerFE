@@ -6,10 +6,11 @@ import {
   UserRoutines,
   Profile,
   Logout,
-  GetActivities
+  GetActivities,
+  CreateActivities,
+  UpdateActivities
 } from './components';
 import { BASE_URL } from './api';
-import { CreateActivity } from './components';
 
 
 const App = () => {
@@ -67,9 +68,9 @@ const App = () => {
     </Route>
 
     <Route exact path = "/routines">    
-     <CreateActivity token = {token} />
+     <CreateActivities token = {token} />
      <hr></hr>
-    <GetActivities />
+    <GetActivities token = {token} />
     </Route>
 
     <Route exact path = "/profile">

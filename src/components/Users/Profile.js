@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { BASE_URL } from '../api';
+import { BASE_URL } from '../../api';
 
 const Profile =  (token) => {
 
