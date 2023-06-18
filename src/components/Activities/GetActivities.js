@@ -33,7 +33,7 @@ const GetActivities = ({token}) => {
           console.log("activities:" , results);
         }
         getActivities();
-      }, [ ]);
+      }, []);
   
 
 return (
@@ -46,7 +46,7 @@ return (
             <h1>{name}</h1>
             <h3>{description}</h3>
             <h4>Id:{id}</h4>
-            <UpdateActivities name = {name} description = {description} token = {token} id = {id} />
+            <UpdateActivities name = {name} description = {description} token = {token} id = {id}  />
           </div>
         ))
       ) : (
