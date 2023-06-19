@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
     const CreateRoutines = ({token}) => {
     const [name, setName] = useState("");
     const [goal, setGoal] = useState ("");
-    const [isPublic, setisPublic] = useState(false);
+    const [isPublic, setisPublic] = useState(null);
     const history = useHistory();
 
     const toggleChecked = () => setisPublic(value => !value);
@@ -31,7 +31,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
           const result = await response.json();
           setName('');
           setGoal('');
-          setisPublic(false);
+          setisPublic(null);
           return result
         } catch (err) {
           console.error(err);
@@ -59,7 +59,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
                value = {goal}
                onChange = {(event) => setGoal(event.target.value)}
         ></input>
-        <label htmlFor = "checkbox">Checkbox</ label>
+        <label htmlFor = "checkbox">Public</ label>
         <input 
            type="checkbox"
            value="check"

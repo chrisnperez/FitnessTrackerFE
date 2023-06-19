@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { BASE_URL } from '../../api';
+import UpdateRoutines from './UpdateRoutines';
+import DeleteRoutines from './DeleteRoutines';
 
-const GetRoutines = () => {
+const GetRoutines = (token) => {
 
     const [routines, setRoutines] = useState([]);
 
@@ -41,8 +43,11 @@ const GetRoutines = () => {
                 <h1>{name}</h1>
                 <h3>{goal}</h3>
                 <h4>Id:{id}</h4>
+                <h4>Public: {isPublic}</h4>
                    <h4>Creator Id: {creatorId}</h4>
                    <h4>Creator Name: {creatorName}</h4>
+                   <UpdateRoutines isPublic = {isPublic} token = {token} id = {id}/>
+                   <DeleteRoutines token = {token} id = {id} />
               </div>
             ))
           ) : (

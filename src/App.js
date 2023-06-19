@@ -85,7 +85,7 @@ const App = () => {
     <Route exact path = "/routines">
       <CreateRoutines token = {token} />
       <hr></hr>
-      <GetRoutines />
+      <GetRoutines token = {token} />
       
     </Route>
 

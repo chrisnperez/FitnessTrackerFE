@@ -9,3 +9,5 @@ export {default as UpdateActivities} from './Activities/UpdateActivities';
 export {default as GetActivityWithPublicRoutine} from './Activities/GetActivityWithPublicRoutine';
 export {default as GetRoutines} from './Routines/GetRoutines';
 export {default as CreateRoutines} from './Routines/CreateRoutines';
+export {default as UpdateRoutines} from './Routines/UpdateRoutines';
+export {default as DeleteRoutines} from './Routines/DeleteRoutines';
