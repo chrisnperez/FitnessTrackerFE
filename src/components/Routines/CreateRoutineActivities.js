@@ -1,43 +1,36 @@
-import React from "react";
-import { useState } from "react";
-import { BASE_URL } from "../../api";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React from 'react';
+import { BASE_URL } from '../../api';
+import {useState } from "react";
 
-    const CreateRoutines = ({token}) => {
-    const [name, setName] = useState("");
-    const [goal, setGoal] = useState ("");
-    const [isPublic, setIsPublic] = useState(null);
-    const history = useHistory();
 
-    const toggleChecked = () => setIsPublic(value => !value);
-
+const CreateRoutineActivities = ({id}) => {
+    const [activityId,setActivityId] = useState("");
+    const [count,setCount] = useState("");
+    const [duration, setDuration] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await fetch(`${BASE_URL}/routines`, {
+          const response = await fetch(`${BASE_URL}/routines/${id}/activities`, {
             method: "POST",
             headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                    name, 
-                    goal,
-                    isPublic
-            }) 
+              activityId: activityId,
+              count: count, 
+              duration: duration
+            })
           });
-      
           const result = await response.json();
-          setName('');
-          setGoal('');
-          setIsPublic(null);
+          console.log(result);
           return result
         } catch (err) {
           console.error(err);
         }
       }
-    
+
+
       return (
         <>
     <h3>Create an Routine below!</h3>
@@ -49,8 +42,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
         <input type="text"
                className="loginuser"
                placeholder="Title Here"
-               value = {name}
-               onChange = {(event) => setName(event.target.value)}
+               value = {activityId}
+               onChange = {(event) => setActivityId(event.target.value)}
         ></input>
         <label htmlFor="goal">Goal</label>
         <input type ="text"
@@ -70,8 +63,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
     </div>
     </>
       );
-
-
 }
 
-export default CreateRoutines;
+export default CreateRoutineActivities;
