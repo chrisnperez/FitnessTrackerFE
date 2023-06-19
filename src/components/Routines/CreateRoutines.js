@@ -3,16 +3,19 @@ import { useState } from "react";
 import { BASE_URL } from "../../api";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-    const CreateActivities = ({token}) => {
+    const CreateRoutines = ({token}) => {
     const [name, setName] = useState("");
-    const [description, setDescription] = useState ("");
+    const [goal, setGoal] = useState ("");
+    const [isPublic, setisPublic] = useState(false);
     const history = useHistory();
+
+    const toggleChecked = () => setisPublic(value => !value);
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await fetch(`${BASE_URL}/activities`, {
+          const response = await fetch(`${BASE_URL}/routines`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',
@@ -20,13 +23,15 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
             },
             body: JSON.stringify({
                     name, 
-                    description
+                    goal,
+                    isPublic
             }) 
           });
       
           const result = await response.json();
           setName('');
-          setDescription('');
+          setGoal('');
+          setisPublic(false);
           return result
         } catch (err) {
           console.error(err);
@@ -35,7 +40,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
     
       return (
         <>
-    <h3>Create an activity below!</h3>
+    <h3>Create an Routine below!</h3>
     
     <div className="postin">
             
@@ -47,13 +52,19 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
                value = {name}
                onChange = {(event) => setName(event.target.value)}
         ></input>
-        <label htmlFor="description">Description</label>
+        <label htmlFor="goal">Goal</label>
         <input type ="text"
                className="loginuser"
-               placeholder="Description here"
-               value = {description}
-               onChange = {(event) => setDescription(event.target.value)}
+               placeholder="Goal here"
+               value = {goal}
+               onChange = {(event) => setGoal(event.target.value)}
         ></input>
+        <label htmlFor = "checkbox">Checkbox</ label>
+        <input 
+           type="checkbox"
+           value="check"
+           onChange={toggleChecked}
+        ></input>  
         <button type="submit">Submit</button>
         </form>
     </div>
@@ -63,4 +74,4 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 }
 
-export default CreateActivities;
+export default CreateRoutines;

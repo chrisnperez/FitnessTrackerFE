@@ -8,7 +8,10 @@ import {
   Logout,
   GetActivities,
   CreateActivities,
-  UpdateActivities
+  UpdateActivities,
+  GetActivityWithPublicRoutine,
+  GetRoutines,
+  CreateRoutines
 } from './components';
 import { BASE_URL } from './api';
 
@@ -51,26 +54,39 @@ const App = () => {
     fetchUser();
     }, [token]);
 
+
    
 
     return (
     <>
     <nav className='navBar'>
                 <Link to="/">Home</Link> |
+                <Link to="/activities">Activities</Link> |
                 <Link to="/routines">Routines</Link> |
                 <Link to="/profile">Profile</Link> |
                 <Link to="/users/login">Account</Link> 
 
             </nav>
 
+    <Route exact path = "/" >
+      <GetActivityWithPublicRoutine />
+    </Route>
+
     <Route path = "/users/:actionType">
         <Register token = {token} setToken = {setToken} user = {user} setUser = {setUser} />
     </Route>
 
-    <Route exact path = "/routines">    
+    <Route exact path = "/activities">    
      <CreateActivities token = {token} />
      <hr></hr>
     <GetActivities token = {token} />
+    </Route>
+
+    <Route exact path = "/routines">
+      <CreateRoutines token = {token} />
+      <hr></hr>
+      <GetRoutines />
+      
     </Route>
 
     <Route exact path = "/profile">
