@@ -2,6 +2,7 @@ import React from 'react';
 import { BASE_URL } from '../../api';
 import { useEffect,useState } from 'react';
 import UpdateActivities from './UpdateActivities';
+import GetActivityWithPublicRoutine from './GetActivityWithPublicRoutine';
 
 
 const GetActivities = ({token}) => {
@@ -47,6 +48,7 @@ return (
             <h3>{description}</h3>
             <h4>Id:{id}</h4>
             <UpdateActivities name = {name} description = {description} token = {token} id = {id}  />
+            <GetActivityWithPublicRoutine id = {id} />
           </div>
         ))
       ) : (

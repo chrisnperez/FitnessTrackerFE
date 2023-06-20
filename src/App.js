@@ -21,7 +21,7 @@ const App = () => {
   const [token,setToken] = useState(localStorage.getItem('token') ?? null);
   const [ user, setUser ] = useState(null); 
   const [routines,setRoutines] = useState([]);
-
+  const [activities,setActivities] = useState([]);
   useEffect(() => {
     const tempToken = localStorage.getItem('token');
     if (tempToken) {
@@ -53,6 +53,8 @@ const App = () => {
     }
     fetchUser();
     }, [token]);
+
+
 
 
    

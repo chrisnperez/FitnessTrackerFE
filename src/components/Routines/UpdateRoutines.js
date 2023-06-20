@@ -11,9 +11,9 @@ const UpdateRoutines = (props) => {
     const [display, setDisplay] = useState("none");
     const [editName, setEditName] = useState("");
     const [editGoal, seteditGoal] = useState("");
-    const [editisPublic, seteditisPublic] = useState(isPublic);
+    const [editIsPublic, setEditIsPublic] = useState(isPublic);
 
-    const toggleChecked = () => seteditisPublic(value => !value);
+    const toggleChecked = () => setEditIsPublic(value => !value);
 
 
     const updateRoutine = async (event) => {
@@ -29,7 +29,7 @@ const UpdateRoutines = (props) => {
                 body: JSON.stringify({
                     name: editName,
                     goal: editGoal,
-                    isPublic: editisPublic
+                    isPublic: editIsPublic
                 })
             });
 
