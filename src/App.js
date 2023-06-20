@@ -14,6 +14,7 @@ import {
   CreateRoutines
 } from './components';
 import { BASE_URL } from './api';
+import AddActivityToRoutines from './components/Routines/AddActivityToRoutines';
 
 
 const App = () => {
@@ -71,7 +72,7 @@ const App = () => {
             </nav>
 
     <Route exact path = "/" >
-      <GetActivityWithPublicRoutine />
+      <AddActivityToRoutines />
     </Route>
 
     <Route path = "/users/:actionType">

@@ -31,7 +31,6 @@ const GetActivities = ({token}) => {
         async function getActivities() {
           const results = await myData();
           setActivities(results);
-          console.log("activities:" , results);
         }
         getActivities();
       }, []);

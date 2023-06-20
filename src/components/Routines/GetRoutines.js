@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BASE_URL } from '../../api';
 import UpdateRoutines from './UpdateRoutines';
 import DeleteRoutines from './DeleteRoutines';
+import AddActivityToRoutines from './AddActivityToRoutines';
 
 const GetRoutines = (token) => {
 
@@ -48,6 +49,7 @@ const GetRoutines = (token) => {
                    <h4>Creator Name: {creatorName}</h4>
                    <UpdateRoutines isPublic = {isPublic} token = {token} id = {id}/>
                    <DeleteRoutines token = {token} id = {id} />
+                   <AddActivityToRoutines id = {id} token ={token}/>
               </div>
             ))
           ) : (
