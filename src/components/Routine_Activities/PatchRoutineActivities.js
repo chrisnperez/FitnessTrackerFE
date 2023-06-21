@@ -5,7 +5,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#app");
 
-const PatchRoutineActivities = ({ id, token }) => {
+const PatchRoutineActivities = ({ id, token, user, creatorName }) => {
   const [count, setCount] = useState("");
   const [duration, setDuration] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -31,9 +31,9 @@ const PatchRoutineActivities = ({ id, token }) => {
     }
   };
 
-  if (!token) {
+  if (user !== creatorName) {
     return null;
-  }
+}
 
   return (
     <>
@@ -52,7 +52,7 @@ const PatchRoutineActivities = ({ id, token }) => {
       >
         <div className="modal-content">
           <h2>Edit Routine Activities</h2>
-          <label htmlFor="duration">Duration:</label>
+          <label htmlFor="duration">Duration: </label>
           <input
             type="number"
             required
@@ -62,7 +62,7 @@ const PatchRoutineActivities = ({ id, token }) => {
             value={duration}
             onChange={(event) => setDuration(event.target.value)}
           />
-          <label htmlFor="count">Count:</label>
+          <label htmlFor="count">Count: </label>
           <input
             type="number"
             required

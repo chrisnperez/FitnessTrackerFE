@@ -4,11 +4,7 @@ import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BASE_URL } from '../../api';
 
-// useEffect(() => {localStorage.setItem('token', token )},
-//   [token]);
-
 const Register = ({ setToken, setUser, token }) => {
-  // const params = useParams();
   const { actionType } = useParams();
   const history = useHistory();
   console.log(actionType)
@@ -34,8 +30,6 @@ const Register = ({ setToken, setUser, token }) => {
         })
       });
       const result = await response.json();
-      // As written below you can log your result
-      // to check what data came back from the above code.
       console.log(result);
       const token = result?.token;
       setPassword('');
@@ -43,8 +37,6 @@ const Register = ({ setToken, setUser, token }) => {
       setToken(token);
       history.push('/profile');
      
-
-      // console.log(actionType)
       return result;
 
     } catch (err) {

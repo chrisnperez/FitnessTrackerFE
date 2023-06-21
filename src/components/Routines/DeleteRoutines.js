@@ -1,7 +1,7 @@
 import React from "react";
 import { BASE_URL } from '../../api';
 
-const DeleteRoutines = ({ token, id }) => {
+const DeleteRoutines = ({ token, id, user, creatorName }) => {
 
     const DeleteRoutine = async () => {
         try {
@@ -20,7 +20,7 @@ const DeleteRoutines = ({ token, id }) => {
         }
     }
 
-    if (!token) {
+    if (user !== creatorName) {
         return null;
     }
 

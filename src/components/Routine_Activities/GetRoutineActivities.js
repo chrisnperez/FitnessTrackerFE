@@ -28,7 +28,7 @@ const GetRoutineActivities = ({ routines }) => {
       console.error(err);
     }
   };
-  
+
   return (
     <>
       <button onClick={openModal}>See Activities</button>
@@ -45,11 +45,10 @@ const GetRoutineActivities = ({ routines }) => {
                 <div key={id}>
                   {activities.map((activity) => (
                     <div key={activity.id}>
-                      <h3>Activity ID: {activity.id}</h3>
-                      <h4>Name: {activity.name}</h4>
-                      <h4>Description: {activity.description}</h4>
-                      <h4>Duration: {activity.duration} minutes</h4>
-                      <h4>Count: {activity.count} sets</h4>
+                      <h2>{activity.name}</h2>
+                      <p>Description: {activity.description}</p>
+                      <p>Duration: {activity.duration} minutes</p>
+                      <p>Count: {activity.count} sets</p>
                     </div>
                   ))}
                 </div>

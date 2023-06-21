@@ -51,7 +51,7 @@ const CreateRoutines = ({ token }) => {
 
       <div className="postin">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name: </label>
           <input
             type="text"
             className="loginuser"
@@ -59,7 +59,7 @@ const CreateRoutines = ({ token }) => {
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
-          <label htmlFor="goal">Goal:</label>
+          <label htmlFor="goal">Goal: </label>
           <input
             type="text"
             className="loginuser"
@@ -67,7 +67,7 @@ const CreateRoutines = ({ token }) => {
             value={goal}
             onChange={(event) => setGoal(event.target.value)}
           />
-          <label htmlFor="checkbox">Public:</label>
+          <label htmlFor="checkbox">Public: </label>
           <input
             type="checkbox"
             value="check"

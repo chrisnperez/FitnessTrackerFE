@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BASE_URL } from '../../api';
 import Modal from 'react-modal';
 
-const AddActivityToRoutines = ({ id, token, activities }) => {
+const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => {
   const [activityId, setActivityId] = useState(0);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -42,8 +42,8 @@ const AddActivityToRoutines = ({ id, token, activities }) => {
     }
   };
 
-  if (!token) {
-    return null; 
+  if (user !== creatorName) {
+    return null;
 }
 
   return (
@@ -59,7 +59,7 @@ const AddActivityToRoutines = ({ id, token, activities }) => {
           },
         }}
       >
-        <div className = "modal-content">
+        <div className="modal-content">
           <h2>Add Activity</h2>
           <fieldset>
             <label htmlFor="select-activityId">
@@ -83,7 +83,7 @@ const AddActivityToRoutines = ({ id, token, activities }) => {
           </fieldset>
 
           <div>
-            <label htmlFor="duration">Duration:</label>
+            <label htmlFor="duration">Duration: </label>
             <input
               type="number"
               required
@@ -95,7 +95,7 @@ const AddActivityToRoutines = ({ id, token, activities }) => {
             />
           </div>
           <div>
-            <label htmlFor="count">Count:</label>
+            <label htmlFor="count">Count: </label>
             <input
               type="number"
               required

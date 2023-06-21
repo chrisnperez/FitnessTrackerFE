@@ -2,7 +2,7 @@ import React from 'react';
 import { BASE_URL } from '../../api';
 
 
-const DeleteRoutineActivities = ({id, token}) => {
+const DeleteRoutineActivities = ({ id, token, user, creatorName }) => {
 
     const myData = async () => {
         try {
@@ -21,14 +21,14 @@ const DeleteRoutineActivities = ({id, token}) => {
         }
     }
 
-    if (!token) {
+    if (user !== creatorName) {
         return null;
-      }
-      
+    }
+
     return (
         <>
             <div>
-            <button onClick={myData}>Delete Routine Activity</button>
+                <button onClick={myData}>Delete Routine Activity</button>
             </div>
 
         </>

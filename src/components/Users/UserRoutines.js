@@ -4,8 +4,15 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BASE_URL } from '../../api';
 
+import UpdateRoutines from '../Routines/UpdateRoutines';
+import DeleteRoutines from '../Routines/DeleteRoutines';
+import AddActivityToRoutines from '../Routines/AddActivityToRoutines';
+import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities';
+import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
+import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
-const UserRoutines = ({ token, user }) => {
+
+const UserRoutines = ({ token, user, activities }) => {
 
   const [routines, setRoutines] = useState([]);
 
@@ -52,11 +59,47 @@ const UserRoutines = ({ token, user }) => {
         Here are your routines:
         <div >
           {routines.length ? (
-            routines.map(({ id, creatorId, name, goal }, idx) => (
+            routines.map(({ id, creatorId, name, goal, creatorName }, idx) => (
               <div className="profile-countainers" key={id ?? idx}>
                 <h2>{name}</h2>
                 <p>{goal}</p>
                 {/* <h4>CreatorId:{creatorId} Id:{id}</h4> */}
+                <GetRoutineActivities routines={routines} />
+                <div>
+                  <AddActivityToRoutines
+                    id={id}
+                    token={token}
+                    activities={activities}
+                    creatorName={creatorName}
+                    user={user}
+                  />
+                </div>
+                <UpdateRoutines
+                  // isPublic={isPublic}
+                  token={token}
+                  id={id}
+                  creatorId={creatorId}
+                  creatorName={creatorName}
+                  user={user}
+                />
+                <DeleteRoutines
+                  token={token}
+                  id={id}
+                  creatorName={creatorName}
+                  user={user}
+                />
+                <PatchRoutineActivities
+                  id={id}
+                  token={token}
+                  creatorName={creatorName}
+                  user={user}
+                />
+                <DeleteRoutineActivities
+                  id={id}
+                  token={token}
+                  creatorName={creatorName}
+                  user={user}
+                />
               </div>
             ))
           ) : (

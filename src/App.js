@@ -55,7 +55,7 @@ const App = () => {
       }
     }
     fetchUser();
-  }, [token]);
+  }, [token, user]);
 
 
   const ActivityGetter = async () => {
@@ -111,15 +111,14 @@ const App = () => {
       <Route exact path="/routines">
         <CreateRoutines token={token} />
         <hr></hr>
-        <GetRoutines token={token} activities={activities} />
+        <GetRoutines token={token} activities={activities} user={user}/>
       </Route>
 
       <Route exact path="/profile">
         <Profile token={token} setToken={setToken} setUser={setUser} user={user} />
         <hr></hr>
         <Logout token={token} setToken={setToken} setUser={setUser} />
-        <UserRoutines token={token} user={user} />
-
+        <UserRoutines token={token} user={user} activities={activities}/>
       </Route>
 
 

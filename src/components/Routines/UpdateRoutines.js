@@ -10,8 +10,12 @@ const UpdateRoutines = (props) => {
     const {
         token,
         id,
-        isPublic
+        isPublic,
+        creatorName,
+        user
     } = props;
+
+    
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [editName, setEditName] = useState("");
@@ -46,7 +50,7 @@ const UpdateRoutines = (props) => {
         }
     };
 
-    if (!token) {
+    if (user !== creatorName) {
         return null;
     }
 
@@ -72,21 +76,21 @@ const UpdateRoutines = (props) => {
             >
                 <div className="modal-content">
                     <h2>Edit Routine</h2>
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">Name: </label>
                     <input
                         required
                         label="Name"
                         value={editName}
                         onChange={event => setEditName(event.target.value)}
                     />
-                    <label htmlFor="goal">Goal:</label>
+                    <label htmlFor="goal">Goal: </label>
                     <input
                         required
                         label="Goal"
                         value={editGoal}
                         onChange={event => setEditGoal(event.target.value)}
                     />
-                    <label htmlFor="checkbox">Public:</label>
+                    <label htmlFor="checkbox">Public: </label>
                     <input
                         type="checkbox"
                         value="check"
