@@ -1,8 +1,7 @@
 import React from "react";
 
 import { useState } from "react";
-
-
+import { BASE_URL } from "../../api";
 
 const PatchRoutineActivities = ({id, token}) => {
 
@@ -16,7 +15,7 @@ const PatchRoutineActivities = ({id, token}) => {
             method: "PATCH",
             headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token.token}`
             },
             body: JSON.stringify({
               count: count,
@@ -60,8 +59,9 @@ const PatchRoutineActivities = ({id, token}) => {
           />
         </div>
 
-      
+        <button onClick={PatchRoutineActivities}>Submit</button>
         </div>  
+
          <button
                 className="editButton"
                 onClick={() => {

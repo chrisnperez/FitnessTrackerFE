@@ -11,14 +11,6 @@ const GetActivities = ({ token, ActivityGetter, activities, setActivities }) => 
 
 
 
-  useEffect(() => {
-    async function getActivities() {
-      const results = await ActivityGetter();
-      setActivities(results);
-    }
-    getActivities();
-  }, []);
-
 
   return (
     <>

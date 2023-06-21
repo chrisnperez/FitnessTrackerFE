@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
 import { BASE_URL } from '../../api';
 
-const DeleteRoutines = ({ token, id }) => {
 
-    const DeleteRoutine = async () => {
+const DeleteRoutineActivities = ({id, token}) => {
+
+    const myData = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/routines/${id}`, {
+            const response = await fetch(`${BASE_URL}/routine_activities/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,14 +21,18 @@ const DeleteRoutines = ({ token, id }) => {
         }
     }
 
+
     return (
         <>
-        <div>
-            <button onClick={DeleteRoutine}>Delete</button>
-        </div>
+            <div>
+            <button onClick={DeleteRoutineActivities}>Delete Routine Activity</button>
+            </div>
+
         </>
     );
 
+
+
 }
 
-export default DeleteRoutines;
+export default DeleteRoutineActivities;

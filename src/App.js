@@ -14,7 +14,7 @@ import {
   CreateRoutines
 } from './components';
 import { BASE_URL } from './api';
-import AddActivityToRoutines from './components/Routines/AddActivityToRoutines';
+// import {AddActivityToRoutines} from './components/Routines/AddActivityToRoutines';
 
 
 const App = () => {
