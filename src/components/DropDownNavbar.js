@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { Logout } from './Logout';
 
-const DropDownNavbar = () => {
+const DropDownNavbar = ({ setToken, setUser }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const history = useHistory();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -10,6 +13,18 @@ const DropDownNavbar = () => {
 
   const closeDropdown = () => {
     setIsDropdownOpen(false);
+  };
+
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    try {
+      setToken(null);
+      setUser(null);
+      history.push('/users/login');
+      closeDropdown();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -25,7 +40,7 @@ const DropDownNavbar = () => {
           {isDropdownOpen && (
             <div className="dropdown-content">
               <Link to="/profile" onClick={closeDropdown}>Profile</Link>
-              <Link to="/users/login" onClick={closeDropdown}>Logout</Link>
+              <button onClick={handleLogout}>Logout</button>
             </div>
           )}
         </div>

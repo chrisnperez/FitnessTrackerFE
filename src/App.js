@@ -80,7 +80,7 @@ const App = () => {
 
   return (
     <>
-    <DropDownNavbar />
+    <DropDownNavbar setToken={setToken} setUser={setUser}/>
 
       {/* <nav className='navBar'>
         <div className='nav-left'>
