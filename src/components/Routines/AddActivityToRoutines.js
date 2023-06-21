@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../api';
 import Modal from 'react-modal';
 
-const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
+const AddActivityToRoutines = ({ id, token, activities, creatorName, user , setActivities}) => {
   const [activityId, setActivityId] = useState(0);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -10,6 +10,24 @@ const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
 
   Modal.setAppElement("#app");
 
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  const fetchActivities = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/activities`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      // Update the activities state
+      setActivities(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -57,7 +75,7 @@ const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
           },
         }}
       >
-        <div className = "modal-content">
+        <div className="modal-content">
           <h2>Add Activity</h2>
           <fieldset>
             <label htmlFor="select-activityId">

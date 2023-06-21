@@ -15,8 +15,6 @@ const UpdateRoutines = (props) => {
         user
     } = props;
 
-    
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [editName, setEditName] = useState("");
     const [editGoal, setEditGoal] = useState("");

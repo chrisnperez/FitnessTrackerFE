@@ -9,7 +9,7 @@ import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities
 import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
 import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
-const GetRoutines = ({ token, user, activitiesTop }) => {
+const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
   const [routines, setRoutines] = useState([]);
 
   const myData = async () => {
@@ -64,6 +64,7 @@ const GetRoutines = ({ token, user, activitiesTop }) => {
                       activities={activitiesTop}
                       creatorName={creatorName}
                       user={user}
+                      setActivities = {setActivities}
                     />
                   </div>
                   <UpdateRoutines

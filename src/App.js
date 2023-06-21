@@ -75,7 +75,7 @@ const App = () => {
       setActivities(results);
     }
     fetchActivities();
-  }, [])
+  },[token])
 
 
   return (
@@ -111,7 +111,7 @@ const App = () => {
       <Route exact path="/routines">
         <CreateRoutines token={token} />
         <hr></hr>
-        <GetRoutines token={token} activitiesTop={activities} user={user}/>
+        <GetRoutines token={token} activitiesTop={activities} user={user} setActivities = {setActivities}/>
       </Route>
 
       <Route exact path="/profile">
