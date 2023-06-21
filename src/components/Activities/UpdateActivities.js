@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { BASE_URL } from '../../api';
 
 const UpdateActivities = (props) => {
-    const { token,
-            name,
-            id,
-            description
-        } = props;
+    const {
+        token,
+        name,
+        id,
+        description
+    } = props;
 
     const [display, setDisplay] = useState("none");
     const [editName, setEditName] = useState("");
@@ -18,14 +19,14 @@ const UpdateActivities = (props) => {
 
         try {
             const response = await fetch(`${BASE_URL}/activities/${id}`, {
+                method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                method: "PATCH",
                 body: JSON.stringify({
-                    name:editName,
-                    description:editDescription
+                    name: editName,
+                    description: editDescription
                 })
             });
 
@@ -56,7 +57,7 @@ const UpdateActivities = (props) => {
                     value={editDescription}
                     onChange={event => setEditDescription(event.target.value)}
                 />
-                
+
                 <button onClick={updateActivity}>Submit</button>
             </div>
             <button

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   Register,
   UserRoutines,
@@ -19,10 +19,10 @@ import AddActivityToRoutines from './components/Routines/AddActivityToRoutines';
 
 const App = () => {
 
-  const [token,setToken] = useState(localStorage.getItem('token') ?? null);
-  const [ user, setUser ] = useState(null); 
-  const [routines,setRoutines] = useState([]);
-  const [activities,setActivities] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem('token') ?? null);
+  const [user, setUser] = useState(null);
+  const [routines, setRoutines] = useState([]);
+  const [activities, setActivities] = useState([]);
   useEffect(() => {
     const tempToken = localStorage.getItem('token');
     if (tempToken) {
@@ -46,62 +46,57 @@ const App = () => {
           // setPassword('');
           // setUsername('');
           setUser(confirmedUser)
-    
+
         } catch (err) {
           console.error(err);
         }
       }
     }
     fetchUser();
-    }, [token]);
+  }, [token]);
 
 
-
-
-   
-
-    return (
+  return (
     <>
-    <nav className='navBar'>
-                <Link to="/">Home</Link> |
-                <Link to="/activities">Activities</Link> |
-                <Link to="/routines">Routines</Link> |
-                <Link to="/profile">Profile</Link> |
-                <Link to="/users/login">Account</Link> 
+      <nav className='navBar'>
+        <Link to="/">Home</Link> |
+        <Link to="/activities">Activities</Link> |
+        <Link to="/routines">Routines</Link> |
+        <Link to="/profile">Profile</Link> |
+        <Link to="/users/login">Account</Link>
 
-            </nav>
+      </nav>
 
-    <Route exact path = "/" >
-      <AddActivityToRoutines />
-    </Route>
+      <Route exact path="/" >
+        {/* <AddActivityToRoutines /> */}
+      </Route>
 
-    <Route path = "/users/:actionType">
-        <Register token = {token} setToken = {setToken} user = {user} setUser = {setUser} />
-    </Route>
+      <Route path="/users/:actionType">
+        <Register token={token} setToken={setToken} user={user} setUser={setUser} />
+      </Route>
 
-    <Route exact path = "/activities">    
-     <CreateActivities token = {token} />
-     <hr></hr>
-    <GetActivities token = {token} />
-    </Route>
+      <Route exact path="/activities">
+        <CreateActivities token={token} />
+        <hr></hr>
+        <GetActivities token={token} setActivities={setActivities} />
+      </Route>
 
-    <Route exact path = "/routines">
-      <CreateRoutines token = {token} />
-      <hr></hr>
-      <GetRoutines token = {token} />
-      
-    </Route>
+      <Route exact path="/routines">
+        <CreateRoutines token={token} />
+        <hr></hr>
+        <GetRoutines token={token} activities={activities}/>
+      </Route>
 
-    <Route exact path = "/profile">
-      <Profile token = {token} setToken = {setToken} setUser = {setUser} user={user} /> 
-      <hr></hr>
-      <Logout token = {token} setToken = {setToken} setUser = {setUser} />   
-       <UserRoutines token = {token} user = {user} />
-    </Route>
+      <Route exact path="/profile">
+        <Profile token={token} setToken={setToken} setUser={setUser} user={user} />
+        <hr></hr>
+        <Logout token={token} setToken={setToken} setUser={setUser} />
+        <UserRoutines token={token} user={user} />
+      </Route>
 
-    
-    </> 
-    )
-  }
 
-  export default App; 
+    </>
+  )
+}
+
+export default App; 

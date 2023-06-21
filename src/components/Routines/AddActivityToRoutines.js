@@ -4,14 +4,15 @@ import { useState } from "react";
 
 
 const AddActivityToRoutines = ({ id, token }) => {
-  const [activityId, setActivityId] = useState([]);
-  const [count, setCount] = useState([]);
-  const [duration, setDuration] = useState([]);
+  const [activityId, setActivityId] = useState(0);
+  // ^^^ this needs to be set to the activity id maybe by desctructuring the activity in the App level
+  const [count, setCount] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [display, setDisplay] = useState("none");
   const [editName, setEditName] = useState("");
   const [editDescription, setEditDescription] = useState("");
 
-  const [button, setButton] = useState(null);
+  // console.log(id)
 
   const AddingActivity = async (event) => {
     event.preventDefault();
@@ -20,12 +21,12 @@ const AddActivityToRoutines = ({ id, token }) => {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token.token}`
         },
         body: JSON.stringify({
           name: editName,
           description: editDescription,
-          activityId: activityId,
+          activityId: id,
           count: count,
           duration: duration
         })
@@ -44,7 +45,7 @@ const AddActivityToRoutines = ({ id, token }) => {
     <>
       <div style={{ display: display }}>
         <div>
-    
+
           <label htmlFor="name">Name: </label>
           <input
             type="text"
@@ -52,7 +53,7 @@ const AddActivityToRoutines = ({ id, token }) => {
             label="Name"
             value={editName}
             onChange={event => setEditName(event.target.value)}
-          /> 
+          />
         </div>
         <label htmlFor="description">Description: </label>
         <input
@@ -61,30 +62,31 @@ const AddActivityToRoutines = ({ id, token }) => {
           label="Description"
           value={editDescription}
           onChange={event => setEditDescription(event.target.value)}
-        /> 
+        />
         <div>
           <label htmlFor="duration">Duration:</label>
           <input
             type="number"
             required
+            min="0"
+            max="100"
             label="duration"
-
-            value={setDuration}
+            value={duration}
             onChange={event => setDuration(event.target.value)}
-          /> 
+          />
         </div>
         <div>
           <label htmlFor="count">Count:</label>
           <input
             type="number"
             required
+            min="0"
+            max="100"
             label="count"
-            value={setCount}
+            value={count}
             onChange={event => setCount(event.target.value)}
-          /> 
+          />
         </div>
-
-
         <button onClick={AddingActivity}>Submit</button>
       </div>
 

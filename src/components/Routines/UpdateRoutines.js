@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { BASE_URL } from '../../api';
 
 const UpdateRoutines = (props) => {
-    const { token,
+    const {
+        token,
         id,
         isPublic
     } = props;
@@ -15,16 +16,17 @@ const UpdateRoutines = (props) => {
 
     const toggleChecked = () => setEditIsPublic(value => !value);
 
+    // console.log(editIsPublic)
 
     const updateRoutine = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`${BASE_URL}/routines/${id}`, {       
+            const response = await fetch(`${BASE_URL}/routines/${id}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token.token}`
                 },
                 body: JSON.stringify({
                     name: editName,
@@ -34,7 +36,7 @@ const UpdateRoutines = (props) => {
             });
 
             const result = await response.json();
-            console.log("token:",token);
+            console.log("token:", token);
             console.log(result);
             return result
         } catch (err) {

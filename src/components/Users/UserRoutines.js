@@ -22,7 +22,7 @@ const UserRoutines = ({ token, user }) => {
       return result;
     } catch (err) {
       console.error(err);
-      throw err; // Propagate the error
+      throw err; 
     }
   }, [user, token]);
   

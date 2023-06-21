@@ -1,7 +1,7 @@
 import React from "react";
 import { BASE_URL } from '../../api';
 
-const DeleteRoutines = ({token,id}) => {
+const DeleteRoutines = ({ token, id }) => {
 
     const DeleteRoutine = async () => {
         try {
@@ -9,7 +9,7 @@ const DeleteRoutines = ({token,id}) => {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token.token}`
                 },
             });
             const result = await response.json();
@@ -21,11 +21,10 @@ const DeleteRoutines = ({token,id}) => {
     }
 
     return (
-        <>    
-    <button onClick = {DeleteRoutine}> Delete</button>
-
-    </>
-      );
+        <div>
+            <button onClick={DeleteRoutine}>Delete</button>
+        </div>
+    );
 
 }
 

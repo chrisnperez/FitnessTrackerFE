@@ -7,35 +7,35 @@ import AddActivityToRoutines from './AddActivityToRoutines';
 
 const GetRoutines = (token) => {
 
-    const [routines, setRoutines] = useState([]);
+  const [routines, setRoutines] = useState([]);
 
-    const myData = async () => {
-        try {
-        const response = await fetch(`${BASE_URL}/routines`, {
-          headers: {
+  const myData = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/routines`, {
+        headers: {
           'Content-Type': 'application/json',
-          },
-        });
-        
-        const result = await response.json();
-        console.log(result);
-        return result
-        } catch (err) {
-        console.error(err);
-        }
-        }
-    
-        useEffect(() => {
-            async function getRoutines() {
-              const results = await myData();
-              setRoutines(results);
-              console.log("routines:" , results);
-            }
-            getRoutines();
-          }, []);
+        },
+      });
 
-            return (
-        <>
+      const result = await response.json();
+      // console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    async function getRoutines() {
+      const results = await myData();
+      setRoutines(results);
+      console.log("routines:", results);
+    }
+    getRoutines();
+  }, []);
+
+  return (
+    <>
       <div>
         <div>
           {routines.length ? (
@@ -45,11 +45,14 @@ const GetRoutines = (token) => {
                 <h3>{goal}</h3>
                 <h4>Id:{id}</h4>
                 <h4>Public: {isPublic}</h4>
-                   <h4>Creator Id: {creatorId}</h4>
-                   <h4>Creator Name: {creatorName}</h4>
-                   <UpdateRoutines isPublic = {isPublic} token = {token} id = {id}/>
-                   <DeleteRoutines token = {token} id = {id} />
-                   <AddActivityToRoutines id = {id} token ={token}/>
+                <h4>Creator Id: {creatorId}</h4>
+                <h4>Creator Name: {creatorName}</h4>
+                <div>
+                  <AddActivityToRoutines id={id} token={token} />
+                </div>
+                <UpdateRoutines isPublic={isPublic} token={token} id={id} />
+                <DeleteRoutines token={token} id={id} />
+
               </div>
             ))
           ) : (
@@ -57,10 +60,10 @@ const GetRoutines = (token) => {
           )}
         </div>
       </div>
-      
-        </>
-    
-      )
+
+    </>
+
+  )
 
 }
 

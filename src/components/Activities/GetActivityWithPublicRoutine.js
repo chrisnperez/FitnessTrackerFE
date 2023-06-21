@@ -3,14 +3,11 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from '../../api';
 
 const GetActivityWithPublicRoutine = (props) => {
-  const {
-    id
-  } = props;
-
+  const { id } = props;
   const [activity, setActivity] = useState([]);
   const [display, setDisplay] = useState("none");
-  const handleSubmit = async (event) => {
 
+  const handleSubmit = async (event) => {
     try {
       const response = await fetch(`${BASE_URL}/activities/${id}/routines`, {
         headers: {
@@ -33,8 +30,6 @@ const GetActivityWithPublicRoutine = (props) => {
     }
     getActivity();
   }, []);
-
-
 
   return (
     <>
@@ -69,8 +64,6 @@ const GetActivityWithPublicRoutine = (props) => {
             <p>No routines with that activity found.</p>
           )}
         </div>
-
-
       </div>
       <button
         className="seeRoutinesButton"
@@ -80,9 +73,7 @@ const GetActivityWithPublicRoutine = (props) => {
         {display === "none" ? "See Routines" : "Hide"}
       </button>
     </>
-
   )
-
 }
 
 
