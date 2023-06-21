@@ -5,7 +5,7 @@ import Slideshow from './SlideShow.js';
 const HomePage = ({ token }) => {
   const images = [
     "/images/dumbells.jpg",
-    "/images/treadmill.jpg",
+    "/images/treadmills.jpg",
     "/images/Shoes.jpg"
   ];
 

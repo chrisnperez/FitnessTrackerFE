@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-const DropDownNavbar = ({ setToken, setUser }) => {
+const DropDownNavbar = ({ setToken, setUser, token }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state variable
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const history = useHistory();
 
   const toggleDropdown = () => {
@@ -19,8 +19,8 @@ const DropDownNavbar = ({ setToken, setUser }) => {
     try {
       setToken(null);
       setUser(null);
-      setIsLoggedIn(false); // Update login status
-      history.push('/users/login');
+      setIsLoggedIn(false);
+      history.push('/');
       closeDropdown();
     } catch (err) {
       console.error(err);
@@ -28,20 +28,19 @@ const DropDownNavbar = ({ setToken, setUser }) => {
   };
 
   useEffect(() => {
-    // Update login status based on token or user existence
-    setIsLoggedIn(!!(setToken && setUser));
-  }, [setToken, setUser]);
+    setIsLoggedIn(!!token);
+  }, [token]);
 
   return (
     <nav className="navBar">
       <div className="nav-left">
         <Link to="/">Home</Link> |
         <Link to="/activities">Activities</Link> |
-        <Link to="/routines">Routines</Link> |
+        <Link to="/routines">Routines</Link>
       </div>
       <div className="nav-right">
         <div className="dropdown" onClick={toggleDropdown}>
-          <Link to="#" className={`dropbtn ${isDropdownOpen ? "active" : ""}`}>
+          <Link to="#" className={`dropbtn ${isDropdownOpen ? 'active' : ''}`}>
             Account
             <span className="arrow"> &#9662;</span>
           </Link>
@@ -58,7 +57,6 @@ const DropDownNavbar = ({ setToken, setUser }) => {
         </div>
       </div>
     </nav>
-
   );
 };
 

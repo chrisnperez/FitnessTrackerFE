@@ -80,7 +80,7 @@ const App = () => {
 
   return (
     <>
-      <DropDownNavbar setToken={setToken} setUser={setUser} />
+      <DropDownNavbar setToken={setToken} setUser={setUser} token = {token} />
 
       {/* <nav className='navBar'>
         <div className='nav-left'>
@@ -117,7 +117,6 @@ const App = () => {
       <Route exact path="/profile">
         {/* <Profile token={token} setToken={setToken} setUser={setUser} user={user} /> */}
         <hr></hr>
-        <Logout token={token} setToken={setToken} setUser={setUser} />
         <UserRoutines token={token} user={user} activities={activities}/>
       </Route>
 
