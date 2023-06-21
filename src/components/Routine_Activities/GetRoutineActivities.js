@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { BASE_URL } from "../../api";
 import Modal from "react-modal";
+import PatchRoutineActivities from "./PatchRoutineActivities";
+import DeleteRoutineActivities from "./DeleteRoutineActivities";
 
-const GetRoutineActivities = ({ activities,id }) => {
+const GetRoutineActivities = ({ activities,id, token, creatorName, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activityData, setActivityData] = useState([]);
 
   const openModal = async () => {
     setIsModalOpen(true);
+    console.log("activities:", activities);
   
   };
 
@@ -34,6 +37,20 @@ const GetRoutineActivities = ({ activities,id }) => {
                   <p>Description: {activity.description}</p>
                   <p>Duration: {activity.duration} minutes</p>
                   <p>Count: {activity.count} sets</p>
+                  <p>activityId : {activity.routineActivityId}</p>
+                  <PatchRoutineActivities
+                  routineActivityId = {activities.routineActivityId}
+                  token={token}
+                  creatorName={creatorName}
+                  user={user}
+                />
+                <DeleteRoutineActivities
+                routineActivityId = {activities.routineActivityId}
+
+                  token={token}
+                  creatorName={creatorName}
+                  user={user}
+                />
                 </div>
               ))
             ) : (

@@ -2,15 +2,15 @@ import React from 'react';
 import { BASE_URL } from '../../api';
 
 
-const DeleteRoutineActivities = ({ id, token, user, creatorName }) => {
+const DeleteRoutineActivities = ({token, user, creatorName, routineActivityId }) => {
 
     const myData = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/routine_activities/${id}`, {
+            const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token.token}`
+                    'Authorization': `Bearer ${token}`
                 },
             });
             const result = await response.json();

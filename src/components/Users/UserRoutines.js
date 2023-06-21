@@ -12,7 +12,7 @@ import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActiviti
 import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
 
-const UserRoutines = ({ token, user, activities }) => {
+const UserRoutines = ({ token, user, activitiesTop }) => {
 
   const [routines, setRoutines] = useState([]);
 
@@ -64,12 +64,17 @@ const UserRoutines = ({ token, user, activities }) => {
                 <h2>{name}</h2>
                 <p>{goal}</p>
                 {/* <h4>CreatorId:{creatorId} Id:{id}</h4> */}
-                <GetRoutineActivities activities = {activities} id = {id} />
+                <GetRoutineActivities activities={activities}
+                    id={id}
+                    creatorName={creatorName}
+                    user={user}
+                    token = {token}
+                     />
                 <div>
                   <AddActivityToRoutines
                     id={id}
                     token={token}
-                    activities={activities}
+                    activities={activitiesTop}
                     creatorName={creatorName}
                     user={user}
                   />
@@ -88,18 +93,7 @@ const UserRoutines = ({ token, user, activities }) => {
                   creatorName={creatorName}
                   user={user}
                 />
-                <PatchRoutineActivities
-                  id={id}
-                  token={token}
-                  creatorName={creatorName}
-                  user={user}
-                />
-                <DeleteRoutineActivities
-                  id={id}
-                  token={token}
-                  creatorName={creatorName}
-                  user={user}
-                />
+              
               </div>
             ))
           ) : (

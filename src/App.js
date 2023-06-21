@@ -111,13 +111,13 @@ const App = () => {
       <Route exact path="/routines">
         <CreateRoutines token={token} />
         <hr></hr>
-        <GetRoutines token={token} activities={activities} user={user}/>
+        <GetRoutines token={token} activitiesTop={activities} user={user}/>
       </Route>
 
       <Route exact path="/profile">
         {/* <Profile token={token} setToken={setToken} setUser={setUser} user={user} /> */}
         <hr></hr>
-        <UserRoutines token={token} user={user} activities={activities}/>
+        <UserRoutines token={token} user={user} activitiesTop={activities}/>
       </Route>
 
 

@@ -9,7 +9,7 @@ import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities
 import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
 import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
-const GetRoutines = ({ token, user }) => {
+const GetRoutines = ({ token, user, activitiesTop }) => {
   const [routines, setRoutines] = useState([]);
 
   const myData = async () => {
@@ -50,16 +50,18 @@ const GetRoutines = ({ token, user }) => {
                 <div>
                   <h2>{name}</h2>
                   <h3>{goal}</h3>
-                  {/* <h4>Id: {id}</h4> */}
-                  {/* <h4>Public: {isPublic}</h4> */}
-                  {/* <h4>Creator Id: {creatorId}</h4> */}
                   <h4>Creator Name: {creatorName}</h4>
-                  <GetRoutineActivities activities = {activities} id = {id} />
+                  <GetRoutineActivities activities={activities}
+                    id={id}
+                    creatorName={creatorName}
+                    user={user}
+                    token = {token}
+                     />
                   <div>
                     <AddActivityToRoutines
                       id={id}
                       token={token}
-                      activities={activities}
+                      activities={activitiesTop}
                       creatorName={creatorName}
                       user={user}
                     />
@@ -78,18 +80,7 @@ const GetRoutines = ({ token, user }) => {
                     creatorName={creatorName}
                     user={user}
                   />
-                  <PatchRoutineActivities
-                    id={id}
-                    token={token}
-                    creatorName={creatorName}
-                    user={user}
-                  />
-                  <DeleteRoutineActivities
-                    id={id}
-                    token={token}
-                    creatorName={creatorName}
-                    user={user}
-                  />
+                
                 </div>
               </div>
             )

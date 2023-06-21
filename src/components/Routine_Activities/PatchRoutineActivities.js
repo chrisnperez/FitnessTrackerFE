@@ -5,14 +5,14 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#app");
 
-const PatchRoutineActivities = ({ id, token, user, creatorName }) => {
+const PatchRoutineActivities = ({ token, user, creatorName, routineActivityId }) => {
   const [count, setCount] = useState("");
   const [duration, setDuration] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const myData = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/routine_activities/${id}`, {
+      const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const PatchRoutineActivities = ({ id, token, user, creatorName }) => {
         className="editButton"
         onClick={() => setModalIsOpen(true)}
       >
-        Edit Routine Activities
+        Edit Routine Activity
       </button>
 
       <Modal
