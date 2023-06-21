@@ -1,87 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { BASE_URL } from '../../api';
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { BASE_URL } from "../../api";
 
 const Register = ({ setToken, setUser, token }) => {
   const { actionType } = useParams();
   const history = useHistory();
-  console.log(actionType)
-
+  console.log(actionType);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (username.length < 8 || password.length < 8) {
+      setError("Username and password must be at least 8 characters long.");
+      return;
+    }
+
     try {
-      const response = await fetch(
-        `${BASE_URL}/users/${actionType}`, {
+      const response = await fetch(`${BASE_URL}/users/${actionType}`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-
           username: username,
-          password: password
-
-        })
+          password: password,
+        }),
       });
       const result = await response.json();
       console.log(result);
       const token = result?.token;
-      setPassword('');
-      setUsername('');
+      setPassword("");
+      setUsername("");
       setToken(token);
-      history.push('/profile');
-     
+      history.push("/profile");
       return result;
-
     } catch (err) {
       console.error(err);
     }
-  }
-
+  };
 
   return (
     <>
-      {!token ?
+      {!token ? (
         <div className="loginContainer">
           <h1>{actionType === "register" ? "Sign Up" : "Log In"}</h1>
-          <form onSubmit={handleSubmit} >
-            <div >
+          <form onSubmit={handleSubmit}>
+            <div>
               <label htmlFor="username">Username: </label>
               <input
                 required
                 label="Username"
                 value={username}
-                onChange={event => setUsername(event.target.value)}
+                onChange={(event) => setUsername(event.target.value)}
               />
             </div>
-            <div >
+            <div>
               <label htmlFor="password">Password: </label>
               <input
                 required
                 label="Password"
                 value={password}
-                onChange={event => setPassword(event.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            <button type="submit">{actionType === 'register' ? "Register" : "Log In"}</button>
-            {actionType === "register"
-              ? <Link to="/users/login">Already have an account? Log In here.</Link>
-              : <Link to="/users/register">Need an account? Register here.</Link>
-            }
+            {error && <p className="error">{error}</p>}
+            <button type="submit">
+              {actionType === "register" ? "Register" : "Log In"}
+            </button>
+            {actionType === "register" ? (
+              <Link to="/users/login">Already have an account? Log In here.</Link>
+            ) : (
+              <Link to="/users/register">Need an account? Register here.</Link>
+            )}
           </form>
         </div>
-        : <div className="loggedInDisplay">
+      ) : (
+        <div className="loggedInDisplay">
           <p>You are already signed in!</p>
-        </div>}
+        </div>
+      )}
     </>
-  )
-
-}
+  );
+};
 
 export default Register;

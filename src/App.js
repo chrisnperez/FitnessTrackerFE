@@ -22,7 +22,7 @@ const App = () => {
 
   const [token, setToken] = useState(localStorage.getItem('token') ?? null);
   const [user, setUser] = useState(null);
-  const [routines, setRoutines] = useState([]);
+  // const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const App = () => {
       <Route exact path="/activities">
         <CreateActivities token={token} ActivityGetter={ActivityGetter} />
         <hr></hr>
-        <GetActivities token={token} setActivities={setActivities} activities={activities} ActivityGetter={ActivityGetter} />
+        <GetActivities token={token} setActivities={setActivities} activities={activities} ActivityGetter={ActivityGetter} user={user}/>
       </Route>
 
       <Route exact path="/routines">
@@ -115,7 +115,7 @@ const App = () => {
       </Route>
 
       <Route exact path="/profile">
-        <Profile token={token} setToken={setToken} setUser={setUser} user={user} />
+        {/* <Profile token={token} setToken={setToken} setUser={setUser} user={user} /> */}
         <hr></hr>
         <Logout token={token} setToken={setToken} setUser={setUser} />
         <UserRoutines token={token} user={user} activities={activities}/>

@@ -15,7 +15,7 @@ const HomePage = ({ token }) => {
         <>
           <h2>Welcome!</h2>
           <p>Click here to view your routines </p>  
-          <Link to="/routines">My Routines</Link>
+          <Link to="/profile">My Routines</Link>
         </>
       ) : (
         <>

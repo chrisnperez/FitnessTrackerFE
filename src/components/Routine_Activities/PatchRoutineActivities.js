@@ -33,7 +33,7 @@ const PatchRoutineActivities = ({ id, token, user, creatorName }) => {
 
   if (user !== creatorName) {
     return null;
-}
+  }
 
   return (
     <>
@@ -48,7 +48,7 @@ const PatchRoutineActivities = ({ id, token, user, creatorName }) => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Edit Routine Activities"
-        
+
       >
         <div className="modal-content">
           <h2>Edit Routine Activities</h2>
