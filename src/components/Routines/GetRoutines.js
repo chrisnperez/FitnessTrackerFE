@@ -4,6 +4,7 @@ import { BASE_URL } from '../../api';
 import UpdateRoutines from './UpdateRoutines';
 import DeleteRoutines from './DeleteRoutines';
 import AddActivityToRoutines from './AddActivityToRoutines';
+import PatchRoutineActivities from './PatchRoutineActivities';
 
 const GetRoutines = (token) => {
 
@@ -52,6 +53,7 @@ const GetRoutines = (token) => {
                 </div>
                 <UpdateRoutines isPublic={isPublic} token={token} id={id} />
                 <DeleteRoutines token={token} id={id} />
+                <PatchRoutineActivities id = {id} token = {token}/>
 
               </div>
             ))
