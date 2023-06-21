@@ -59,12 +59,12 @@ const UserRoutines = ({ token, user, activities }) => {
         Here are your routines:
         <div >
           {routines.length ? (
-            routines.map(({ id, creatorId, name, goal, creatorName }, idx) => (
+            routines.map(({ id, creatorId, name, goal, creatorName, activities }, idx) => (
               <div className="profile-countainers" key={id ?? idx}>
                 <h2>{name}</h2>
                 <p>{goal}</p>
                 {/* <h4>CreatorId:{creatorId} Id:{id}</h4> */}
-                <GetRoutineActivities routines={routines} />
+                <GetRoutineActivities activities = {activities} id = {id} />
                 <div>
                   <AddActivityToRoutines
                     id={id}

@@ -9,7 +9,7 @@ import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities
 import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
 import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
-const GetRoutines = ({ token, activities, user }) => {
+const GetRoutines = ({ token, user }) => {
   const [routines, setRoutines] = useState([]);
 
   const myData = async () => {
@@ -43,7 +43,7 @@ const GetRoutines = ({ token, activities, user }) => {
         {routines.length ? (
           routines.map(
             (
-              { id, creatorId, creatorName, goal, isPublic, name },
+              { id, creatorId, creatorName, goal, isPublic, name, activities },
               idx
             ) => (
               <div className="routine-container" key={id ?? idx}>

@@ -2,35 +2,19 @@ import React, { useState } from "react";
 import { BASE_URL } from "../../api";
 import Modal from "react-modal";
 
-const GetRoutineActivities = ({ id }) => {
+const GetRoutineActivities = ({ activities,id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activityData, setActivityData] = useState([]);
 
   const openModal = async () => {
     setIsModalOpen(true);
-    const data = await myData();
-    setActivityData(data);
+  
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  const myData = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/activities`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const result = await response.json();
-      console.log(result);
-      return result;
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return (
     <>
@@ -43,8 +27,8 @@ const GetRoutineActivities = ({ id }) => {
         <div>
           <button onClick={closeModal}>Close Activities</button>
           <div>
-            {activityData.length ? (
-              activityData.map((activity) => (
+            {activities.length ? (
+              activities.map((activity) => (
                 <div key={activity.id}>
                   <h2>{activity.name}</h2>
                   <p>Description: {activity.description}</p>
