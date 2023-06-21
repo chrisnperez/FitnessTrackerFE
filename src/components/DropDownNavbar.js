@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 const DropDownNavbar = ({ setToken, setUser }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state variable
   const history = useHistory();
 
   const toggleDropdown = () => {
@@ -19,7 +19,7 @@ const DropDownNavbar = ({ setToken, setUser }) => {
     try {
       setToken(null);
       setUser(null);
-      setIsLoggedIn(false);
+      setIsLoggedIn(false); // Update login status
       history.push('/users/login');
       closeDropdown();
     } catch (err) {
@@ -28,6 +28,7 @@ const DropDownNavbar = ({ setToken, setUser }) => {
   };
 
   useEffect(() => {
+    // Update login status based on token or user existence
     setIsLoggedIn(!!(setToken && setUser));
   }, [setToken, setUser]);
 
@@ -40,19 +41,16 @@ const DropDownNavbar = ({ setToken, setUser }) => {
       </div>
       <div className="nav-right">
         <div className="dropdown" onClick={toggleDropdown}>
-          <Link to="#" className={`dropbtn ${isDropdownOpen ? "active" : ""}`}>
-            Account
-            <span className="arrow">&#9662;</span>
-          </Link>
+          <button className="dropbtn">Account</button>
           {isDropdownOpen && (
-           <div className="dropdown-content">
-             <Link to="/profile" onClick={closeDropdown}>Profile</Link>
-             {isLoggedIn ? (
-               <button className="logout-dropbtn" onClick={handleLogout}>Logout</button>
-             ) : (
-               <Link to="/users/login">Sign In</Link>
-             )}
-           </div>
+            <div className="dropdown-content">
+              <Link to="/profile" onClick={closeDropdown}>Profile</Link>
+              {isLoggedIn ? (
+                <button onClick={handleLogout}>Logout</button>
+              ) : (
+                <Link to="/users/login">Sign In</Link>
+              )}
+            </div>
           )}
         </div>
       </div>
