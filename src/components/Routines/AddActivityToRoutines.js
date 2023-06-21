@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BASE_URL } from '../../api';
 import Modal from 'react-modal';
 
-const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => {
+const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
   const [activityId, setActivityId] = useState(0);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -42,13 +42,11 @@ const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => 
     }
   };
 
-  if (user !== creatorName) {
-    return null;
-}
-
   return (
     <>
-      <button onClick={openModal}>Add Activity</button>
+      {creatorName === user && (
+        <button onClick={openModal}>Add Activity</button>
+      )}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -59,7 +57,7 @@ const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => 
           },
         }}
       >
-        <div className="modal-content">
+        <div className = "modal-content">
           <h2>Add Activity</h2>
           <fieldset>
             <label htmlFor="select-activityId">
@@ -83,7 +81,7 @@ const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => 
           </fieldset>
 
           <div>
-            <label htmlFor="duration">Duration: </label>
+            <label htmlFor="duration">Duration:</label>
             <input
               type="number"
               required
@@ -95,7 +93,7 @@ const AddActivityToRoutines = ({ id, token, activities, user, creatorName }) => 
             />
           </div>
           <div>
-            <label htmlFor="count">Count: </label>
+            <label htmlFor="count">Count:</label>
             <input
               type="number"
               required
