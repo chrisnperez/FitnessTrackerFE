@@ -10,7 +10,7 @@ const Logout = ({ setToken, setUser, token }) => {
             try {
                 setToken(null);
                 setUser(null)
-                history.push('/users/login')
+                history.push('/')
             } catch (err) {
                 console.error(err)
             }

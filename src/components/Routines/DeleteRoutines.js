@@ -9,7 +9,7 @@ const DeleteRoutines = ({ token, id, user, creatorName }) => {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token.token}`
+                    'Authorization': `Bearer ${token}`
                 },
             });
             const result = await response.json();

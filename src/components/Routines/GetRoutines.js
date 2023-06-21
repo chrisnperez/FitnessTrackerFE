@@ -54,7 +54,7 @@ const GetRoutines = ({ token, activities, user }) => {
                   {/* <h4>Public: {isPublic}</h4> */}
                   {/* <h4>Creator Id: {creatorId}</h4> */}
                   <h4>Creator Name: {creatorName}</h4>
-                  <GetRoutineActivities  id = {id} />
+                  <GetRoutineActivities activities = {activities} id = {id} />
                   <div>
                     <AddActivityToRoutines
                       id={id}

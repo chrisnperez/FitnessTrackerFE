@@ -18,7 +18,7 @@ const GetRoutineActivities = ({ id }) => {
 
   const myData = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/routines/${id}`, {
+      const response = await fetch(`${BASE_URL}/activities`, {
         headers: {
           "Content-Type": "application/json",
         },

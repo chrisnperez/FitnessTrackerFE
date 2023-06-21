@@ -22,6 +22,12 @@ body {
 .nav-right {
   display: flex;
   align-items: center;
+  display:flex;
+  justify-content:center;
+}
+.loginContainer {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .navBar a {
@@ -82,6 +88,10 @@ body {
 .logout-dropbtn:hover {
   background-color: #ddd;
 }
+label[for="password"] {
+ margin-left:5px;
+}
+
 
 /* This is css for the forms for Create Activity and Routines */
 
@@ -111,6 +121,7 @@ body {
   border-radius: 3px;
   border: 1px solid #ccc;
 }
+
 
 button[type="submit"] {
   background-color: #333;
@@ -194,4 +205,58 @@ body.modal-open {
 img {
   max-width: 50vw;
 }
+
+.homepage-container {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.link-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+.welcome-user-container {
+  margin-top: 40px;
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 400px;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
