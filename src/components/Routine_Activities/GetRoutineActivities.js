@@ -39,13 +39,13 @@ const GetRoutineActivities = ({ activities,id, token, creatorName, user }) => {
                   <p>Count: {activity.count} sets</p>
                   <p>activityId : {activity.routineActivityId}</p>
                   <PatchRoutineActivities
-                  routineActivityId = {activities.routineActivityId}
+                  routineActivityId = {activity.routineActivityId}
                   token={token}
                   creatorName={creatorName}
                   user={user}
                 />
                 <DeleteRoutineActivities
-                routineActivityId = {activities.routineActivityId}
+                routineActivityId = {activity.routineActivityId}
 
                   token={token}
                   creatorName={creatorName}

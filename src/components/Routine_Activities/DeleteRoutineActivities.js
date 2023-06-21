@@ -10,7 +10,7 @@ const DeleteRoutineActivities = ({token, user, creatorName, routineActivityId })
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token.token}`
                 },
             });
             const result = await response.json();

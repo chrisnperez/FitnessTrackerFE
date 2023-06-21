@@ -7,8 +7,6 @@ import { BASE_URL } from '../../api';
 import UpdateRoutines from '../Routines/UpdateRoutines';
 import DeleteRoutines from '../Routines/DeleteRoutines';
 import AddActivityToRoutines from '../Routines/AddActivityToRoutines';
-import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities';
-import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
 import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
 
