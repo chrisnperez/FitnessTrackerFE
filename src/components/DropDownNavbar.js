@@ -41,20 +41,24 @@ const DropDownNavbar = ({ setToken, setUser }) => {
       </div>
       <div className="nav-right">
         <div className="dropdown" onClick={toggleDropdown}>
-          <button className="dropbtn">Account</button>
+          <Link to="#" className={`dropbtn ${isDropdownOpen ? "active" : ""}`}>
+            Account
+            <span className="arrow"> &#9662;</span>
+          </Link>
           {isDropdownOpen && (
             <div className="dropdown-content">
               <Link to="/profile" onClick={closeDropdown}>Profile</Link>
               {isLoggedIn ? (
-                <button onClick={handleLogout}>Logout</button>
+                <button className="logout-dropbtn" onClick={handleLogout}>Logout</button>
               ) : (
-                <Link to="/users/login">Sign In</Link>
+                <Link to="/users/login" className="dropbtn">Sign In</Link>
               )}
             </div>
           )}
         </div>
       </div>
     </nav>
+
   );
 };
 
