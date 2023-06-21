@@ -41,6 +41,7 @@ const Register = ({ setToken, setUser, token }) => {
       setPassword('');
       setUsername('');
       setToken(token);
+      history.push('/profile');
      
 
       // console.log(actionType)
