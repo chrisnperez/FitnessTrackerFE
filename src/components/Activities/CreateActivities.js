@@ -42,21 +42,21 @@ const CreateActivities = ({ token }) => {
       <div className="postin">
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Activity Name:</label>
           <input type="text"
             className="loginuser"
             placeholder="Title Here"
             value={name}
             onChange={(event) => setName(event.target.value)}
           ></input>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Description:</label>
           <input type="text"
             className="loginuser"
             placeholder="Description here"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           ></input>
-          <button type="submit">Submit</button>
+          <button type="submit">Create Activity</button>
         </form>
       </div>
     </>

@@ -11,7 +11,8 @@ import {
   UpdateActivities,
   GetActivityWithPublicRoutine,
   GetRoutines,
-  CreateRoutines
+  CreateRoutines,
+  DropDownNavbar
 } from './components';
 import { BASE_URL } from './api';
 // import {AddActivityToRoutines} from './components/Routines/AddActivityToRoutines';
@@ -23,6 +24,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
+  
   useEffect(() => {
     const tempToken = localStorage.getItem('token');
     if (tempToken) {
@@ -66,26 +68,31 @@ const App = () => {
     console.log(result);
     return result;
   }
-  
+
   useEffect(() => {
-    async function fetchActivities(){
+    async function fetchActivities() {
       const results = await ActivityGetter();
       setActivities(results);
     }
     fetchActivities();
   }, [])
-  
+
 
   return (
     <>
-      <nav className='navBar'>
-        <Link to="/">Home</Link> |
-        <Link to="/activities">Activities</Link> |
-        <Link to="/routines">Routines</Link> |
-        <Link to="/profile">Profile</Link> |
-        <Link to="/users/login">Account</Link>
+    <DropDownNavbar />
 
-      </nav>
+      {/* <nav className='navBar'>
+        <div className='nav-left'>
+          <Link to="/">Home</Link> |
+          <Link to="/activities">Activities</Link> |
+          <Link to="/routines">Routines</Link> |
+        </div>
+        <div className='nav-right'>
+          <Link to="/profile">Profile</Link> |
+          <Link to="/users/login">Account</Link>
+        </div>
+      </nav> */}
 
       <Route exact path="/" >
         {/* <AddActivityToRoutines /> */}
@@ -96,9 +103,9 @@ const App = () => {
       </Route>
 
       <Route exact path="/activities">
-        <CreateActivities token={token} ActivityGetter = {ActivityGetter} />
+        <CreateActivities token={token} ActivityGetter={ActivityGetter} />
         <hr></hr>
-        <GetActivities token={token} setActivities={setActivities} activities = {activities} ActivityGetter = {ActivityGetter} />
+        <GetActivities token={token} setActivities={setActivities} activities={activities} ActivityGetter={ActivityGetter} />
       </Route>
 
       <Route exact path="/routines">
@@ -112,7 +119,7 @@ const App = () => {
         <hr></hr>
         <Logout token={token} setToken={setToken} setUser={setUser} />
         <UserRoutines token={token} user={user} />
-        
+
       </Route>
 
 

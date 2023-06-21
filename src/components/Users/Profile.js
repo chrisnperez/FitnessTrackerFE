@@ -4,8 +4,7 @@ import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min
 import { BASE_URL } from '../../api';
 
 const Profile =  (token) => {
-
-
+  
     const handleSubmit = async (event) => {
     try {
         const response = await fetch(`${BASE_URL}/users/me`, {
