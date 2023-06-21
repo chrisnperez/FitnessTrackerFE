@@ -13,10 +13,10 @@ const GetActivities = ({ token, activities }) => {
         <div>
           {activities.length ? (
             activities.map(({ id, name, description }, idx) => (
-              <div key={id ?? idx}>
-                <h1>{name}</h1>
-                <h3>{description}</h3>
-                <h4>Id:{id}</h4>
+              <div className='activity-box' key={id ?? idx}>
+                <h2>{name}</h2>
+                <p>{description}</p>
+                {/* <h4>Id:{id}</h4> */}
                 <UpdateActivities name={name} description={description} token={token} id={id} />
                 <GetActivityWithPublicRoutine id={id} />
               </div>

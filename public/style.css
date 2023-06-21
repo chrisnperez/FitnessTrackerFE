@@ -123,9 +123,9 @@ button[type="submit"] {
 
 
 .modal-content {
-  width: 400px; /* Set the desired width of the modal */
+  width: 400px; 
   max-width: 90%;
-  margin: 0 auto; /* Center the modal horizontally */
+  margin: 0 auto; 
   padding: 20px;
   background-color: #fff;
   border-radius: 4px;
@@ -133,6 +133,46 @@ button[type="submit"] {
 }
 
 body.modal-open {
-  overflow: hidden; /* Prevent scrolling on the background content */
+  overflow: hidden; 
 
+}
+
+/* this is for activites */ 
+
+.activity-box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* this is for spreading the card */ 
+.getActivityWithPublicRoutine {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.getActivityWithPublicRoutine .modalContent {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.edit-button-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* #welcomeUser {
+  display: flex;
+  overflow: auto;
+  object-fit: cover;
+  overflow: hidden;
+  width: ;
+} */
+
+img {
+  max-width: 50vw;
 }

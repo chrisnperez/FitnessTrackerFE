@@ -14,4 +14,6 @@ export {default as AddActivityToRoutines} from './Routines/AddActivityToRoutines
 export {default as PatchRoutineActivities} from './Routine_Activities/PatchRoutineActivities';
 export {default as DeleteRoutineActivities} from './Routine_Activities/DeleteRoutineActivities';
 export {default as GetRoutineActivities} from './Routine_Activities/GetRoutineActivities';
-export {default as DropDownNavbar} from './DropDownNavbar'
+export {default as DropDownNavbar} from './DropDownNavbar';
+export {default as HomePage} from './HomePage'
+export {default as Slideshow} from './SlideShow'

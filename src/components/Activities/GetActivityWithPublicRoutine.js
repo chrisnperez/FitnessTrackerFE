@@ -44,6 +44,7 @@ const GetActivityWithPublicRoutine = (props) => {
 
   return (
     <>
+      <div className="getActivityWithPublicRoutine">
       <button onClick={openModal}>See Routines</button>
       <Modal
         isOpen={isModalOpen}
@@ -80,6 +81,7 @@ const GetActivityWithPublicRoutine = (props) => {
           <button onClick={closeModal}>Close</button>
         </div>
       </Modal>
+      </div>
     </>
   );
   

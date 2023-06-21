@@ -12,10 +12,10 @@ import {
   GetActivityWithPublicRoutine,
   GetRoutines,
   CreateRoutines,
-  DropDownNavbar
+  DropDownNavbar,
+  HomePage
 } from './components';
 import { BASE_URL } from './api';
-// import {AddActivityToRoutines} from './components/Routines/AddActivityToRoutines';
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
-  
+
   useEffect(() => {
     const tempToken = localStorage.getItem('token');
     if (tempToken) {
@@ -80,7 +80,7 @@ const App = () => {
 
   return (
     <>
-    <DropDownNavbar setToken={setToken} setUser={setUser}/>
+      <DropDownNavbar setToken={setToken} setUser={setUser} />
 
       {/* <nav className='navBar'>
         <div className='nav-left'>
@@ -95,7 +95,7 @@ const App = () => {
       </nav> */}
 
       <Route exact path="/" >
-        {/* <AddActivityToRoutines /> */}
+        <HomePage token={token} />
       </Route>
 
       <Route path="/users/:actionType">
