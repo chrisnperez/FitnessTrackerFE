@@ -10,6 +10,7 @@ const CreateRoutines = ({ token }) => {
   const history = useHistory();
 
   const toggleChecked = () => setIsPublic(value => !value);
+  console.log(isPublic);
   // this is wonky during edit routines
 
   const handleSubmit = async (event) => {

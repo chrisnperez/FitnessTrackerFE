@@ -3,7 +3,7 @@ import { BASE_URL } from '../../api';
 import { useState } from "react";
 
 
-const AddActivityToRoutines = ({ id, token }) => {
+const AddActivityToRoutines = ({ id, token, activities }) => {
   const [activityId, setActivityId] = useState(0);
   // ^^^ this needs to be set to the activity id maybe by desctructuring the activity in the App level
   const [count, setCount] = useState(0);
@@ -12,7 +12,6 @@ const AddActivityToRoutines = ({ id, token }) => {
   const [editName, setEditName] = useState("");
   const [editDescription, setEditDescription] = useState("");
 
-  // console.log(id)
 
   const AddingActivity = async (event) => {
     event.preventDefault();
@@ -21,19 +20,17 @@ const AddActivityToRoutines = ({ id, token }) => {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token.token}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-          name: editName,
-          description: editDescription,
-          activityId: id,
+
+          activityId: activityId,
           count: count,
           duration: duration
         })
       });
       const result = await response.json();
       console.log(result);
-      console.log("id:", id);
       return result
     } catch (err) {
       console.error(err);
@@ -44,25 +41,26 @@ const AddActivityToRoutines = ({ id, token }) => {
   return (
     <>
       <div style={{ display: display }}>
-        <div>
-
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            required
-            label="Name"
-            value={editName}
-            onChange={event => setEditName(event.target.value)}
-          />
-        </div>
-        <label htmlFor="description">Description: </label>
-        <input
-          type="text"
-          required
-          label="Description"
-          value={editDescription}
-          onChange={event => setEditDescription(event.target.value)}
-        />
+      <fieldset>
+        <label htmlFor="selet-activityId">
+          Activity <span className="activity-dropdown">({activities.length})</span>
+        </label>
+        <select
+          name="activity"
+          id= "select-activityId"
+          value={activityId}
+          onChange={(event) => setActivityId(event.target.value)}
+        >
+          <option value="any">Any</option>
+          {activities.sort((a,b) => a.name.localeCompare(b.name))
+          .map((activity) => {
+          return <option key={activity.id} value={activity.id}>
+             {activity.name}
+            </option>
+          })}
+        </select>
+      </fieldset>
+       
         <div>
           <label htmlFor="duration">Duration:</label>
           <input
@@ -87,9 +85,9 @@ const AddActivityToRoutines = ({ id, token }) => {
             onChange={event => setCount(event.target.value)}
           />
         </div>
+
         <button onClick={AddingActivity}>Submit</button>
       </div>
-
       <button
         className="AddActivityButton"
         onClick={() => {

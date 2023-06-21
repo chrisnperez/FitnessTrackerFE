@@ -25,7 +25,7 @@ const DeleteRoutineActivities = ({id, token}) => {
     return (
         <>
             <div>
-            <button onClick={DeleteRoutineActivities}>Delete Routine Activity</button>
+            <button onClick={myData}>Delete Routine Activity</button>
             </div>
 
         </>

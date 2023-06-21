@@ -7,7 +7,7 @@ const GetActivityWithPublicRoutine = (props) => {
   const [activity, setActivity] = useState([]);
   const [display, setDisplay] = useState("none");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     try {
       const response = await fetch(`${BASE_URL}/activities/${id}/routines`, {
         headers: {
@@ -44,13 +44,13 @@ const GetActivityWithPublicRoutine = (props) => {
                 <h4>Id: {creatorName}</h4>
 
                 {activities.length ? (
-                  activities.map((activityObj) => (
-                    <div key={activityObj.id}>
-                      <h3>activityId: {activityObj.id}</h3>
-                      <h4>Name: {activityObj.name}</h4>
-                      <h4>Description:{activityObj.description} </h4>
-                      <h4>duration: {activityObj.duration} minutes</h4>
-                      <h4>count: {activityObj.count} sets</h4>
+                  activities.map((activity) => (
+                    <div key={activity.id}>
+                      <h3>activityId: {activity.id}</h3>
+                      <h4>Name: {activity.name}</h4>
+                      <h4>Description:{activity.description} </h4>
+                      <h4>duration: {activity.duration} minutes</h4>
+                      <h4>count: {activity.count} sets</h4>
 
                     </div>
                   ))

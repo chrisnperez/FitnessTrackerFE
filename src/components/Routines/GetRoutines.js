@@ -6,8 +6,9 @@ import DeleteRoutines from './DeleteRoutines';
 import AddActivityToRoutines from './AddActivityToRoutines';
 import PatchRoutineActivities from '../Routine_Activities/PatchRoutineActivities';
 import DeleteRoutineActivities from '../Routine_Activities/DeleteRoutineActivities';
+import GetRoutineActivities from '../Routine_Activities/GetRoutineActivities';
 
-const GetRoutines = (token) => {
+const GetRoutines = ({token, activities}) => {
 
   const [routines, setRoutines] = useState([]);
 
@@ -49,8 +50,9 @@ const GetRoutines = (token) => {
                 <h4>Public: {isPublic}</h4>
                 <h4>Creator Id: {creatorId}</h4>
                 <h4>Creator Name: {creatorName}</h4>
+                <GetRoutineActivities routines={routines} />
                 <div>
-                  <AddActivityToRoutines id={id} token={token} />
+                  <AddActivityToRoutines id={id} token={token} activities = {activities} />
                 </div>
                 <UpdateRoutines isPublic={isPublic} token={token} id={id} />
                 <DeleteRoutines token={token} id={id} />

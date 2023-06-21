@@ -55,13 +55,6 @@ const App = () => {
     fetchUser();
   }, [token]);
 
-  useEffect(() => {
-    async function fetchActivities(){
-      const results = await ActivityGetter();
-      setActivities(results);
-    }
-    fetchActivities();
-  }, [])
 
   const ActivityGetter = async () => {
     const response = await fetch(`${BASE_URL}/activities`, ({
@@ -73,7 +66,15 @@ const App = () => {
     console.log(result);
     return result;
   }
-
+  
+  useEffect(() => {
+    async function fetchActivities(){
+      const results = await ActivityGetter();
+      setActivities(results);
+    }
+    fetchActivities();
+  }, [])
+  
 
   return (
     <>
@@ -111,6 +112,7 @@ const App = () => {
         <hr></hr>
         <Logout token={token} setToken={setToken} setUser={setUser} />
         <UserRoutines token={token} user={user} />
+        
       </Route>
 
 

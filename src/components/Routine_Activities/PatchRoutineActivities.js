@@ -59,7 +59,7 @@ const PatchRoutineActivities = ({id, token}) => {
           />
         </div>
 
-        <button onClick={PatchRoutineActivities}>Submit</button>
+        <button onClick={myData}>Submit</button>
         </div>  
 
          <button

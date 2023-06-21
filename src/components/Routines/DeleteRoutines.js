@@ -23,7 +23,7 @@ const DeleteRoutines = ({ token, id }) => {
     return (
         <>
         <div>
-            <button onClick={DeleteRoutine}>Delete</button>
+            <button onClick={DeleteRoutine}>Delete Routine</button>
         </div>
         </>
     );

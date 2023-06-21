@@ -14,3 +14,4 @@ export {default as DeleteRoutines} from './Routines/DeleteRoutines';
 export {default as AddActivityToRoutines} from './Routines/AddActivityToRoutines';
 export {default as PatchRoutineActivities} from './Routine_Activities/PatchRoutineActivities';
 export {default as DeleteRoutineActivities} from './Routine_Activities/DeleteRoutineActivities';
+export {default as GetRoutineActivities} from './Routine_Activities/GetRoutineActivities';
