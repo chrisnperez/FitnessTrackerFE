@@ -55,6 +55,25 @@ const App = () => {
     fetchUser();
   }, [token]);
 
+  useEffect(() => {
+    async function fetchActivities(){
+      const results = await ActivityGetter();
+      setActivities(results);
+    }
+    fetchActivities();
+  }, [])
+
+  const ActivityGetter = async () => {
+    const response = await fetch(`${BASE_URL}/activities`, ({
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }))
+    const result = await response.json();
+    console.log(result);
+    return result;
+  }
+
 
   return (
     <>
@@ -76,15 +95,15 @@ const App = () => {
       </Route>
 
       <Route exact path="/activities">
-        <CreateActivities token={token} />
+        <CreateActivities token={token} ActivityGetter = {ActivityGetter} />
         <hr></hr>
-        <GetActivities token={token} setActivities={setActivities} />
+        <GetActivities token={token} setActivities={setActivities} activities = {activities} ActivityGetter = {ActivityGetter} />
       </Route>
 
       <Route exact path="/routines">
         <CreateRoutines token={token} />
         <hr></hr>
-        <GetRoutines token={token} activities={activities}/>
+        <GetRoutines token={token} activities={activities} />
       </Route>
 
       <Route exact path="/profile">

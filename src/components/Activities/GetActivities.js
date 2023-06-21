@@ -5,7 +5,7 @@ import UpdateActivities from './UpdateActivities';
 import GetActivityWithPublicRoutine from './GetActivityWithPublicRoutine';
 
 
-const GetActivities = ({ token, setActivities }) => {
+const GetActivities = ({ token, getActivities, activities, setActivities }) => {
 
   // const [activities,setActivities] = useState([]); moved this to the app level to try to destructure the avitivity id.
 
