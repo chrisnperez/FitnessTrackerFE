@@ -42,6 +42,10 @@ const AddActivityToRoutines = ({ id, token, activities }) => {
     }
   };
 
+  if (!token) {
+    return null; 
+}
+
   return (
     <>
       <button onClick={openModal}>Add Activity</button>

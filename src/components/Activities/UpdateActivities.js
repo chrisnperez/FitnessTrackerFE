@@ -2,14 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { BASE_URL } from '../../api';
 
-const UpdateActivities = (props) => {
-    const {
-        token,
-        name,
-        id,
-        description
-    } = props;
-
+const UpdateActivities = ({ token, name, id, description }) => {
     const [display, setDisplay] = useState("none");
     const [editName, setEditName] = useState("");
     const [editDescription, setEditDescription] = useState("");
@@ -36,6 +29,10 @@ const UpdateActivities = (props) => {
         } catch (err) {
             console.error(err);
         }
+    }
+
+    if (!token) {
+        return null;
     }
 
     return (

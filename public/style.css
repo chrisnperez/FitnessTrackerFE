@@ -139,7 +139,7 @@ body.modal-open {
 
 /* this is for activites */ 
 
-.activity-box {
+.activity-countainer {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
@@ -163,6 +163,24 @@ body.modal-open {
 .edit-button-left {
   display: flex;
   justify-content: flex-start;
+}
+
+/* for routines */
+
+.routine-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-countainers {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* #welcomeUser {

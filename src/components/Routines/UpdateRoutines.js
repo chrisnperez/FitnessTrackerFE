@@ -46,6 +46,10 @@ const UpdateRoutines = (props) => {
         }
     };
 
+    if (!token) {
+        return null;
+    }
+
     return (
         <>
             <button
@@ -61,10 +65,10 @@ const UpdateRoutines = (props) => {
                 contentLabel="Edit Routine"
                 style={{
                     overlay: {
-                      backgroundColor: "transparent",
+                        backgroundColor: "transparent",
                     },
-                  }}
-               
+                }}
+
             >
                 <div className="modal-content">
                     <h2>Edit Routine</h2>

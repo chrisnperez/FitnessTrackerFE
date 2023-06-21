@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect,useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { BASE_URL } from '../../api';
 
 
 const UserRoutines = ({ token, user }) => {
 
-  const [routines,setRoutines] = useState([]);
+  const [routines, setRoutines] = useState([]);
 
   const myData = useCallback(async () => {
     try {
@@ -22,45 +22,51 @@ const UserRoutines = ({ token, user }) => {
       return result;
     } catch (err) {
       console.error(err);
-      throw err; 
+      throw err;
     }
   }, [user, token]);
-  
-  
-      useEffect(() => {
-        async function getUserRoutines() {
-          const results = await myData();
-          setRoutines(results);
-          console.log("routines:" , results);
-        }
-        getUserRoutines();
-      }, [user, myData]);
-
-      
 
 
-return (
-  <>
-  <h2>Hello {user}! </h2>
-<div>
-  Here are your routines:
-  <div>
-    {routines.length ? (
-      routines.map(({ id, creatorId, name, goal }, idx) => (
-        <div key={id ?? idx}>
-          <h1>{name}</h1>
-          <h3>{goal}</h3>
-          <h4>CreatorId:{creatorId} Id:{id}</h4>
+  useEffect(() => {
+    async function getUserRoutines() {
+      const results = await myData();
+      setRoutines(results);
+      console.log("routines:", results);
+    }
+    getUserRoutines();
+  }, [user, myData]);
+
+
+  if (!token) {
+    return (
+      <>
+        <h3>Please log in first to see profile!</h3>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h2>Welcome {user}! </h2>
+      <div>
+        Here are your routines:
+        <div >
+          {routines.length ? (
+            routines.map(({ id, creatorId, name, goal }, idx) => (
+              <div className="profile-countainers" key={id ?? idx}>
+                <h2>{name}</h2>
+                <p>{goal}</p>
+                {/* <h4>CreatorId:{creatorId} Id:{id}</h4> */}
+              </div>
+            ))
+          ) : (
+            <p>No routines found.</p>
+          )}
         </div>
-      ))
-    ) : (
-      <p>No routines found.</p>
-    )}
-  </div>
-</div>
+      </div>
 
-  </>
-)
+    </>
+  )
 
 }
 

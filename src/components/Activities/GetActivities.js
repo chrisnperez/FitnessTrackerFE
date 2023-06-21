@@ -13,7 +13,7 @@ const GetActivities = ({ token, activities }) => {
         <div>
           {activities.length ? (
             activities.map(({ id, name, description }, idx) => (
-              <div className='activity-box' key={id ?? idx}>
+              <div className='activity-countainer' key={id ?? idx}>
                 <h2>{name}</h2>
                 <p>{description}</p>
                 {/* <h4>Id:{id}</h4> */}

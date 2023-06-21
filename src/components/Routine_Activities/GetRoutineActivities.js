@@ -28,7 +28,7 @@ const GetRoutineActivities = ({ routines }) => {
       console.error(err);
     }
   };
-
+  
   return (
     <>
       <button onClick={openModal}>See Activities</button>

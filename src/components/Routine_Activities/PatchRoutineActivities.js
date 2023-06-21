@@ -31,6 +31,10 @@ const PatchRoutineActivities = ({ id, token }) => {
     }
   };
 
+  if (!token) {
+    return null;
+  }
+
   return (
     <>
       <button

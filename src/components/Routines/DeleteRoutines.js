@@ -20,11 +20,15 @@ const DeleteRoutines = ({ token, id }) => {
         }
     }
 
+    if (!token) {
+        return null;
+    }
+
     return (
         <>
-        <div>
-            <button onClick={DeleteRoutine}>Delete Routine</button>
-        </div>
+            <div>
+                <button onClick={DeleteRoutine}>Delete Routine</button>
+            </div>
         </>
     );
 

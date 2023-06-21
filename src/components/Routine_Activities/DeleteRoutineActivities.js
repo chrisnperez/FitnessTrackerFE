@@ -21,7 +21,10 @@ const DeleteRoutineActivities = ({id, token}) => {
         }
     }
 
-
+    if (!token) {
+        return null;
+      }
+      
     return (
         <>
             <div>
