@@ -36,6 +36,9 @@ const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
         }),
       });
       const result = await response.json();
+      console.log(result);
+      closeModal(); 
+      alert('Activity added successfully'); 
       return result;
     } catch (err) {
       console.error(err);
