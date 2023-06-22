@@ -21,7 +21,6 @@ const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
       });
 
       const result = await response.json();
-      // console.log(result);
       return result;
     } catch (err) {
       console.error(err);
@@ -32,7 +31,6 @@ const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
     async function getRoutines() {
       const results = await myData();
       setRoutines(results);
-      console.log('routines:', results);
     }
     getRoutines();
   }, []);

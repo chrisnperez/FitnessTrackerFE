@@ -14,8 +14,17 @@ const SlideShow = ({ images, interval }) => {
   }, [images, interval]);
 
   return (
-    <div>
-      <img src={images[currentIndex]} alt="slideshow" />
+    <div className="slideshow-container">
+      <div className="slideshow">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            className={`slideshow-image ${index === currentIndex ? 'active' : ''}`}
+            src={image}
+            alt="slideshow"
+          />
+        ))}
+      </div>
     </div>
   );
 };
