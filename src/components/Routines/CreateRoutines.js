@@ -1,12 +1,34 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../api";
-
 
 const CreateRoutines = ({ token }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(null);
+  const [createdRoutine, setCreatedRoutine] = useState(null);
+  const [routineList, setRoutineList] = useState([]);
+
+  useEffect(() => {
+    const fetchRoutines = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/routines`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const result = await response.json();
+        setRoutineList(result);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    if (createdRoutine) {
+      fetchRoutines();
+     
+    
+    }
+  }, [createdRoutine, token]);
 
   const toggleChecked = () => setIsPublic((value) => !value);
 
@@ -30,7 +52,7 @@ const CreateRoutines = ({ token }) => {
       setName("");
       setGoal("");
       setIsPublic(null);
-      return result;
+      setCreatedRoutine(result); 
     } catch (err) {
       console.error(err);
     }
@@ -75,6 +97,13 @@ const CreateRoutines = ({ token }) => {
           <button type="submit">Submit</button>
         </form>
       </div>
+
+      <h3>Routine List:</h3>
+      <ul>
+        {routineList.map((routine) => (
+          <li key={routine.id}>{routine.name}</li>
+        ))}
+      </ul>
     </>
   );
 };

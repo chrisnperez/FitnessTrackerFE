@@ -1,12 +1,32 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../api";
-import { useHistory } from "react-router-dom";
 
 const CreateActivities = ({ token }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  // const history = useHistory();
+  const [createdActivity, setCreatedActivity] = useState(null);
+  const [activityList, setActivityList] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/activities`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const result = await response.json();
+        setActivityList(result);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    if (createdActivity) {
+      fetchActivities();
+     
+    }
+  }, [createdActivity, token]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,23 +35,23 @@ const CreateActivities = ({ token }) => {
       const response = await fetch(`${BASE_URL}/activities`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           name,
-          description
-        })
+          description,
+        }),
       });
 
       const result = await response.json();
-      setName('');
-      setDescription('');
-      return result;
+      setName("");
+      setDescription("");
+      setCreatedActivity(result); 
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   if (!token) {
     return (
@@ -66,8 +86,15 @@ const CreateActivities = ({ token }) => {
           <button type="submit">Create Activity</button>
         </form>
       </div>
+
+      <h3>Activity List:</h3>
+      <ul>
+        {activityList.map((activity) => (
+          <li key={activity.id}>{activity.name}</li>
+        ))}
+      </ul>
     </>
   );
-}
+};
 
 export default CreateActivities;

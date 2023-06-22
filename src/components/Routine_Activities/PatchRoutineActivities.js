@@ -25,6 +25,8 @@ const PatchRoutineActivities = ({ token, user, creatorName, routineActivityId })
       });
       const result = await response.json();
       alert('Routine Activity Updated');
+      setModalIsOpen(false);
+     
 
       return result;
     } catch (err) {
