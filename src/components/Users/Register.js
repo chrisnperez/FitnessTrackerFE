@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { BASE_URL } from "../../api";
 
-const Register = ({ setToken, setUser, token }) => {
+const Register = ({ setToken, token }) => {
   const { actionType } = useParams();
   const history = useHistory();
-  console.log(actionType);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +31,6 @@ const Register = ({ setToken, setUser, token }) => {
         }),
       });
       const result = await response.json();
-      console.log(result);
       const token = result?.token;
       setPassword("");
       setUsername("");

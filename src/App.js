@@ -4,12 +4,8 @@ import { useState } from 'react';
 import {
   Register,
   UserRoutines,
-  Profile,
-  Logout,
   GetActivities,
   CreateActivities,
-  UpdateActivities,
-  GetActivityWithPublicRoutine,
   GetRoutines,
   CreateRoutines,
   DropDownNavbar,
@@ -45,8 +41,6 @@ const App = () => {
           });
           const result = await response.json();
           const confirmedUser = result?.username
-          // setPassword('');
-          // setUsername('');
           setUser(confirmedUser)
 
         } catch (err) {
@@ -65,7 +59,6 @@ const App = () => {
       },
     }))
     const result = await response.json();
-    console.log(result);
     return result;
   }
 
@@ -75,52 +68,63 @@ const App = () => {
       setActivities(results);
     }
     fetchActivities();
-  },[token])
+  }, [token])
 
 
   return (
     <>
-      <DropDownNavbar setToken={setToken} setUser={setUser} token = {token} />
-
-      {/* <nav className='navBar'>
-        <div className='nav-left'>
-          <Link to="/">Home</Link> |
-          <Link to="/activities">Activities</Link> |
-          <Link to="/routines">Routines</Link> |
-        </div>
-        <div className='nav-right'>
-          <Link to="/profile">Profile</Link> |
-          <Link to="/users/login">Account</Link>
-        </div>
-      </nav> */}
-
+      <DropDownNavbar
+        setToken={setToken}
+        setUser={setUser}
+        token={token} />
       <Route exact path="/" >
+        <hr></hr>
         <HomePage token={token} />
       </Route>
 
       <Route path="/users/:actionType">
-        <Register token={token} setToken={setToken} user={user} setUser={setUser} />
+        <Register
+          token={token}
+          setToken={setToken}
+          user={user}
+          setUser={setUser}
+        />
       </Route>
 
       <Route exact path="/activities">
-        <CreateActivities token={token} ActivityGetter={ActivityGetter} />
+        <CreateActivities
+          token={token}
+          ActivityGetter={ActivityGetter}
+        />
         <hr></hr>
-        <GetActivities token={token} setActivities={setActivities} activities={activities} ActivityGetter={ActivityGetter} user={user}/>
+        <GetActivities
+          token={token}
+          setActivities={setActivities}
+          activities={activities}
+          ActivityGetter={ActivityGetter}
+          user={user}
+        />
       </Route>
 
       <Route exact path="/routines">
         <CreateRoutines token={token} />
         <hr></hr>
-        <GetRoutines token={token} activitiesTop={activities} user={user} setActivities = {setActivities}/>
+        <GetRoutines
+          token={token}
+          activitiesTop={activities}
+          user={user}
+          setActivities={setActivities}
+        />
       </Route>
 
       <Route exact path="/profile">
-        {/* <Profile token={token} setToken={setToken} setUser={setUser} user={user} /> */}
         <hr></hr>
-        <UserRoutines token={token} user={user} activitiesTop={activities}/>
+        <UserRoutines
+          token={token}
+          user={user}
+          activitiesTop={activities}
+        />
       </Route>
-
-
     </>
   )
 }

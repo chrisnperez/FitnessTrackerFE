@@ -7,7 +7,6 @@ const CreateRoutines = ({ token }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(null);
-  const history = useHistory();
 
   const toggleChecked = () => setIsPublic((value) => !value);
 

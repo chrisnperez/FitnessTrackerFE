@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { BASE_URL } from '../../api';
 import Modal from 'react-modal';
 
-// Set the root element of the modal in the DOM
 Modal.setAppElement('#app');
 
 const UpdateRoutines = (props) => {

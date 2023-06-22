@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const CreateActivities = ({ token }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -4,20 +4,16 @@ import Modal from "react-modal";
 import PatchRoutineActivities from "./PatchRoutineActivities";
 import DeleteRoutineActivities from "./DeleteRoutineActivities";
 
-const GetRoutineActivities = ({ activities,id, token, creatorName, user }) => {
+const GetRoutineActivities = ({ activities, id, token, creatorName, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activityData, setActivityData] = useState([]);
 
   const openModal = async () => {
     setIsModalOpen(true);
-    console.log("activities:", activities);
-  
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
 
   return (
     <>
@@ -38,19 +34,20 @@ const GetRoutineActivities = ({ activities,id, token, creatorName, user }) => {
                   <p>Duration: {activity.duration} minutes</p>
                   <p>Count: {activity.count} sets</p>
                   <p>activityId : {activity.routineActivityId}</p>
+                  
                   <PatchRoutineActivities
-                  routineActivityId = {activity.routineActivityId}
-                  token={token}
-                  creatorName={creatorName}
-                  user={user}
-                />
-                <DeleteRoutineActivities
-                routineActivityId = {activity.routineActivityId}
-
-                  token={token}
-                  creatorName={creatorName}
-                  user={user}
-                />
+                    routineActivityId={activity.routineActivityId}
+                    token={token}
+                    creatorName={creatorName}
+                    user={user}
+                  />
+                  
+                  <DeleteRoutineActivities
+                    routineActivityId={activity.routineActivityId}
+                    token={token}
+                    creatorName={creatorName}
+                    user={user}
+                  />
                 </div>
               ))
             ) : (

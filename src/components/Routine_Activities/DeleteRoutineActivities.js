@@ -2,7 +2,7 @@ import React from 'react';
 import { BASE_URL } from '../../api';
 
 
-const DeleteRoutineActivities = ({token, user, creatorName, routineActivityId }) => {
+const DeleteRoutineActivities = ({ token, user, creatorName, routineActivityId }) => {
 
     const myData = async () => {
         try {
@@ -14,7 +14,6 @@ const DeleteRoutineActivities = ({token, user, creatorName, routineActivityId })
                 },
             });
             const result = await response.json();
-            console.log(result);
             return result
         } catch (err) {
             console.error(err);

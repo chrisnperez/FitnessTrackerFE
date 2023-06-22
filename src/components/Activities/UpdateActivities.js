@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { BASE_URL } from '../../api';
 
-const UpdateActivities = ({ token, name, id, description, user }) => {
+const UpdateActivities = ({ token, id }) => {
     const [display, setDisplay] = useState("none");
     const [editName, setEditName] = useState("");
     const [editDescription, setEditDescription] = useState("");
@@ -24,7 +24,6 @@ const UpdateActivities = ({ token, name, id, description, user }) => {
             });
 
             const result = await response.json();
-            console.log(result);
             return result
         } catch (err) {
             console.error(err);

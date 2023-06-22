@@ -23,7 +23,6 @@ const UserRoutines = ({ token, user, activitiesTop }) => {
         },
       });
       const result = await response.json();
-      console.log(result);
       return result;
     } catch (err) {
       console.error(err);
@@ -36,7 +35,6 @@ const UserRoutines = ({ token, user, activitiesTop }) => {
     async function getUserRoutines() {
       const results = await myData();
       setRoutines(results);
-      console.log("routines:", results);
     }
     getUserRoutines();
   }, [user, myData]);
@@ -61,7 +59,6 @@ const UserRoutines = ({ token, user, activitiesTop }) => {
               <div className="profile-countainers" key={id ?? idx}>
                 <h2>{name}</h2>
                 <p>{goal}</p>
-                {/* <h4>CreatorId:{creatorId} Id:{id}</h4> */}
                 <GetRoutineActivities activities={activities}
                     id={id}
                     creatorName={creatorName}
@@ -78,7 +75,6 @@ const UserRoutines = ({ token, user, activitiesTop }) => {
                   />
                 </div>
                 <UpdateRoutines
-                  // isPublic={isPublic}
                   token={token}
                   id={id}
                   creatorId={creatorId}

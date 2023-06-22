@@ -51,12 +51,13 @@ const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
                   <h2>{name}</h2>
                   <h3>{goal}</h3>
                   <h4>Creator Name: {creatorName}</h4>
-                  <GetRoutineActivities activities={activities}
+                  <GetRoutineActivities
+                    activities={activities}
                     id={id}
                     creatorName={creatorName}
                     user={user}
-                    token = {token}
-                     />
+                    token={token}
+                  />
                   <div>
                     <AddActivityToRoutines
                       id={id}
@@ -64,7 +65,7 @@ const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
                       activities={activitiesTop}
                       creatorName={creatorName}
                       user={user}
-                      setActivities = {setActivities}
+                      setActivities={setActivities}
                     />
                   </div>
                   <UpdateRoutines
@@ -81,7 +82,6 @@ const GetRoutines = ({ token, user, activitiesTop, setActivities }) => {
                     creatorName={creatorName}
                     user={user}
                   />
-                
                 </div>
               </div>
             )

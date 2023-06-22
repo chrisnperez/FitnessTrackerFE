@@ -15,7 +15,7 @@ const HomePage = ({ token }) => {
       {token ? (
         <div className="homepage-content">
           <h2 className="welcome-message">Welcome!</h2>
-          <p>Click here to view your routines</p>  
+          <p>Click here to view your routines</p>
           <Link to="/profile" className="homepage-link">My Routines</Link>
         </div>
       ) : (
