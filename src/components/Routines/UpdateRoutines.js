@@ -39,8 +39,7 @@ const UpdateRoutines = (props) => {
             });
 
             const result = await response.json();
-            console.log("token:", token);
-            console.log(result);
+            alert('Your Routine has been updated!');
             return result;
         } catch (err) {
             console.error(err);

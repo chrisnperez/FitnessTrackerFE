@@ -13,6 +13,7 @@ const DeleteRoutines = ({ token, id, user, creatorName }) => {
                 },
             });
             const result = await response.json();
+            alert('Your Routine has been deleted');
             return result
         } catch (err) {
             console.error(err);

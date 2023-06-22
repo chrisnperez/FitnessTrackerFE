@@ -3,7 +3,6 @@ import { BASE_URL } from '../../api';
 
 
 const DeleteRoutineActivities = ({ token, user, creatorName, routineActivityId }) => {
-
     const myData = async () => {
         try {
             const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
@@ -14,11 +13,15 @@ const DeleteRoutineActivities = ({ token, user, creatorName, routineActivityId }
                 },
             });
             const result = await response.json();
+            alert('Routine Activity Deleted');
+            
             return result
         } catch (err) {
             console.error(err);
         }
     }
+
+    
 
     if (user !== creatorName) {
         return null;

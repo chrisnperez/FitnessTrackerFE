@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../../api';
 import Modal from 'react-modal';
-import { useEffect } from 'react';
+
 
 const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
   const [activityId, setActivityId] = useState(0);
@@ -36,7 +36,6 @@ const AddActivityToRoutines = ({ id, token, activities, creatorName, user}) => {
         }),
       });
       const result = await response.json();
-      console.log(result);
       return result;
     } catch (err) {
       console.error(err);

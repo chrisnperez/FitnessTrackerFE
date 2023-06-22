@@ -24,6 +24,9 @@ const UpdateActivities = ({ token, id }) => {
             });
 
             const result = await response.json();
+            alert('Activity Updated');
+            setEditName('');
+            setEditDescription('');
             return result
         } catch (err) {
             console.error(err);

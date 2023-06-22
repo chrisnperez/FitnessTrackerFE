@@ -24,6 +24,8 @@ const PatchRoutineActivities = ({ token, user, creatorName, routineActivityId })
         }),
       });
       const result = await response.json();
+      alert('Routine Activity Updated');
+
       return result;
     } catch (err) {
       console.error(err);

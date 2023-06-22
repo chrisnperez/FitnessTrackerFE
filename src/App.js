@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Register,
@@ -18,7 +18,6 @@ const App = () => {
 
   const [token, setToken] = useState(localStorage.getItem('token') ?? null);
   const [user, setUser] = useState(null);
-  // const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
